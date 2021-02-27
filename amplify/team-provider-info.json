@@ -1,0 +1,29 @@
+{
+  "master": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-portfolio-master-125942-authRole",
+      "UnauthRoleArn": "arn:aws:iam::566427100098:role/amplify-portfolio-master-125942-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::566427100098:role/amplify-portfolio-master-125942-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-portfolio-master-125942-deployment",
+      "UnauthRoleName": "amplify-portfolio-master-125942-unauthRole",
+      "StackName": "amplify-portfolio-master-125942",
+      "StackId": "arn:aws:cloudformation:us-east-2:566427100098:stack/amplify-portfolio-master-125942/f567c580-792d-11eb-86ed-06099dc5fdd4",
+      "AmplifyAppId": "dttty6xj0bhhk"
+    },
+    "categories": {
+      "function": {
+        "contactFormMaster": {
+          "deploymentBucketName": "amplify-portfolio-master-125942-deployment",
+          "s3Key": "amplify-builds/contactFormMaster-6f713778784243397767-build.zip"
+        }
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "dttty6xj0bhhk",
+          "type": "manual"
+        }
+      }
+    }
+  }
+}

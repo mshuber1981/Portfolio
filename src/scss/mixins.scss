@@ -1,0 +1,26 @@
+/* Wide Background Border
+************************************************************** */
+@mixin backgroundBorder($color) {
+  box-shadow: 10px 0 $color, -10px 0 $color;
+}
+
+/* Background Image
+************************************************************** */
+@mixin backgroundImage($url) {
+  background: $url no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Media Queries
+************************************************************** */
+@mixin navItem() {
+  .nav-item {
+    font-size: 1.5rem;
+    width: 8rem;
+    height: 3rem;
+    background: rgba(14, 13, 13, 0.95);
+  }
+}

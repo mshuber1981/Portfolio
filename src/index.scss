@@ -1,0 +1,146 @@
+/*
+    https://create-react-app.dev/docs/adding-a-sass-stylesheet
+    https://create-react-app.dev/docs/adding-bootstrap/
+*/
+@import "./scss/variables.scss";
+@import "./scss/mixins.scss";
+// https://eduardoboucas.github.io/include-media/
+@import "~include-media/dist/_include-media.scss";
+@import "~bootstrap/scss/bootstrap";
+
+/* General
+************************************************************** */
+body {
+  @include backgroundBorder($info);
+  background-color: black;
+  max-width: $page-max-width;
+  margin: 0 auto 0 auto;
+  overflow: auto;
+}
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+button:visited {
+  background-color: none;
+}
+hr {
+  border: 0.1rem solid white;
+  width: 50%;
+  filter: $drop-shadow;
+}
+.drop-shadow {
+  filter: $drop-shadow;
+}
+
+/* Header
+************************************************************** */
+#home {
+  min-height: 100vh;
+  transition: all 0.5s ease;
+  // https://unsplash.com/photos/8weijaL92T8
+  @include backgroundImage(url(../images/starz.jpg));
+  .custom-nav {
+    max-width: $page-max-width;
+    margin: 0 auto 0 auto;
+    button {
+      background-color: $info;
+    }
+    .nav-item {
+      width: 11rem;
+      background: $background-color;
+      .active {
+        color: orangered !important;
+      }
+    }
+  }
+  .scroll-down {
+    margin-top: 8rem;
+  }
+}
+
+/* About
+************************************************************** */
+#about {
+  p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Projects
+************************************************************** */
+#projects {
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon,
+  .carousel-indicators li {
+    background-color: $primary;
+    padding: 0.25rem;
+  }
+}
+
+/* Contact
+************************************************************** */
+#contact {
+  .container > div {
+    min-height: 75vh;
+  }
+}
+
+/* Footer
+************************************************************** */
+footer {
+  background-color: black;
+  min-height: 25vh;
+}
+
+/* Media Queries
+************************************************************** */
+@include media(">=tablet", "<desktop") {
+  #about {
+    .about-img {
+      text-align: center;
+      max-width: 50vw;
+    }
+  }
+}
+@include media(">=phone", "<=tablet") {
+  #home {
+    @include backgroundImage(url(../images/starz-mobile.jpg));
+    .custom-nav {
+      @include navItem();
+    }
+    h1 {
+      font-size: 3rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+  #about {
+    figure,
+    figcaption {
+      font-size: 1rem;
+    }
+  }
+}
+@include media(">=phone", "<desktop", "landscape") {
+  #home {
+    @include backgroundImage(url(../images/starz.jpg));
+    .custom-nav {
+      @include navItem();
+    }
+    .scroll-down {
+      margin-top: 0.5rem;
+    }
+  }
+  #about {
+    .about-img {
+      max-width: 50vw;
+    }
+  }
+}
+@media only screen and (max-device-height: 320px) {
+  hr {
+    display: none;
+  }
+}

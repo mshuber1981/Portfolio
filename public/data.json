@@ -1,0 +1,38 @@
+{
+  "socialLinks": {
+    "link1": "https://www.linkedin.com/in/mikeyneedsajob/",
+    "link2": "https://github.com/mshuber1981"
+  },
+  "home": {
+    "name": "Michael Huber",
+    "message1": "I am a ",
+    "span1": "AWS ",
+    "message2": "focused ",
+    "span2": "JavaScript ",
+    "message3": "Developer"
+  },
+  "about": {
+    "p1": "Welcome to my portfolio site, built with React and powered by AWS Amplify.",
+    "p2": "After a successful career in Information Technology support I felt like something was missing. I enjoyed the work I was doing, but I wanted to learn more. I decided to make a change and learn to code. Now I am on a journey to rediscover my own potential.",
+    "link1": "https://dpswezpu6i73j.cloudfront.net/Resume/Michael-Huber-Resume.pdf",
+    "link2": "https://www.youracclaim.com/badges/b8be6845-1c01-4205-8387-09a97be77004/public_url",
+    "link3": "https://www.youracclaim.com/badges/bda9d426-3515-4063-8d0a-5bf1626b2d14/public_url"
+  },
+  "projects": {
+    "title1": "Background Generator",
+    "description1": "My first project, a simple linear gradient background generator.",
+    "link1": "https://github.com/mshuber1981/Background-Generator",
+    "image1": "https://mshuber1981.github.io/Background-Generator/bg.jpg",
+    "title2": "GitHub React Portfolio Template",
+    "description2": "A fast, responsive React portfolio template that uses the GitHub REST API.",
+    "link2": "https://github.com/mshuber1981/github-react-portfolio-template",
+    "image2": "https://mshuber1981.github.io/github-react-portfolio-template/react.jpeg",
+    "title3": "Notepad",
+    "description3": "My CRUDdy note taking app, built with React and powered by AWS Amplify.",
+    "link3": "https://github.com/mshuber1981/notepad",
+    "image3": "https://notepad.mikeyneedsajob.com/notepad.jpg",
+    "slide1Link": "https://github.com/mshuber1981/FCC-Responsive-Web-Design-Projects",
+    "slide2Link": "https://github.com/mshuber1981/FCC-JavaScript-Algorithms-and-Data-Structures-Projects",
+    "slide3Link": "https://github.com/mshuber1981/FCC-Front-End-Libraries-Projects"
+  }
+}
