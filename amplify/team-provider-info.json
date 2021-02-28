@@ -15,7 +15,7 @@
       "function": {
         "contactFormMaster": {
           "deploymentBucketName": "amplify-portfolio-master-125942-deployment",
-          "s3Key": "amplify-builds/contactFormMaster-6f713778784243397767-build.zip"
+          "s3Key": "amplify-builds/contactFormMaster-786a366838416c614976-build.zip"
         }
       },
       "hosting": {
