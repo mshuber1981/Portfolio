@@ -7,12 +7,13 @@ const Contact = () => {
   const [validated, setValidated] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const postFormData = async (data) => {
     const response = await fetch(
       // API Gateway Contact Form endpoint
       process.env.REACT_APP_api,
-
+      // Lambda example - https://gist.github.com/mshuber1981/9e95b9b83839d9e89740a6f8dcb482bf
       {
         method: "POST",
         body: JSON.stringify(data),
@@ -22,11 +23,6 @@ const Contact = () => {
         },
       }
     );
-
-    if (!response.ok) {
-      const message = `An error has occured: ${response.status}`;
-      throw new Error(message);
-    }
 
     return response;
   };
@@ -63,10 +59,10 @@ const Contact = () => {
           setShowSuccess(true);
         })
         .catch((error) => {
-          console.log(error.message);
           setValidated(false);
           event.target.reset();
           // Error alert
+          setErrorMessage(error.message);
           setShowError(true);
         });
     }
@@ -150,7 +146,7 @@ const Contact = () => {
                 dismissible
               >
                 <Alert.Heading>
-                  Sorry, something went wrong. Please try again later.
+                  Sorry, something went wrong ({errorMessage}).
                 </Alert.Heading>
               </Alert>
             </Form.Row>
