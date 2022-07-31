@@ -120,4 +120,4 @@ export const projectCardImages = [
   Add your formspree endpoint below.
   https://formspree.io/
 */
-export const formspreeUrl = process.env.formspree_Url;
+export const formspreeUrl = process.env.REACT_APP_FORMSPREE_URL;
