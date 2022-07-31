@@ -7,7 +7,7 @@ import {
   selectIsLoading,
 } from "./pages/homeSlice";
 import { fetchGitHubReops } from "./pages/allProjectsSlice";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 // Components
 import { Container } from "react-bootstrap";
@@ -76,7 +76,7 @@ export default function App() {
     );
   } else {
     return (
-      <HashRouter>
+      <BrowserRouter>
         <ScrollToTop />
         <ThemeProvider theme={themes[theme]}>
           <GlobalStyles />
@@ -86,7 +86,7 @@ export default function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ThemeProvider>
-      </HashRouter>
+      </BrowserRouter>
     );
   }
 }
