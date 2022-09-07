@@ -1,5 +1,6 @@
 {
-  "name": "github-react-portfolio-template",
+  "name": "portfolio",
+  "homepage": "https://www.mikeyneedsajob.com/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
