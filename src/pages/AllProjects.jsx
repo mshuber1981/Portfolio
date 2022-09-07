@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppContext } from "../appContext";
 import { useSelector } from "react-redux";
+import { selectData as homeData } from "../pages/homeSlice";
 import { selectData, selectError, selectIsLoading } from "./allProjectsSlice";
 import { Element } from "react-scroll";
 import styled from "styled-components";
@@ -20,7 +21,6 @@ import {
   Title,
   Loading,
 } from "../components/globalStyledComponents";
-import ScrollToTop from "../components/ScrollToTop";
 import SecondaryNavBar from "../components/SecondaryNavBar";
 import StyledCard from "../components/StyledCard";
 import Footer from "../components/Footer";
@@ -52,6 +52,14 @@ export default function AllProjects() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const data = useSelector(selectData);
+  const { name } = useSelector(homeData);
+
+  React.useEffect(
+    function () {
+      document.title = `${name} | All Projects`;
+    },
+    [name]
+  );
 
   React.useEffect(
     function () {
@@ -160,7 +168,6 @@ export default function AllProjects() {
   } else {
     return (
       <>
-        <ScrollToTop />
         <Element name={"AllProjects"}>
           <SecondaryNavBar />
         </Element>

@@ -1,6 +1,8 @@
+import React from "react";
 import { Element } from "react-scroll";
+import { useSelector } from "react-redux";
+import { selectData } from "../pages/homeSlice";
 // Components
-import ScrollToTop from "../components/ScrollToTop";
 import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
 import AboutMe from "../components/AboutMe";
@@ -11,9 +13,17 @@ import { BackToTop } from "../components/globalStyledComponents";
 import Footer from "../components/Footer";
 
 export default function Home() {
+  const { name } = useSelector(selectData);
+
+  React.useEffect(
+    function () {
+      document.title = `${name} | Portfolio`;
+    },
+    [name]
+  );
+
   return (
     <>
-      <ScrollToTop />
       <Element name={"Home"} id="home">
         <NavBar />
         <Hero />
