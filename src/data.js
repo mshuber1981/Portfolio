@@ -12,7 +12,9 @@ import { SiJavascript, SiStyledcomponents, SiRedux } from "react-icons/si";
 
 // Projects Images (add your images to the /images directory and import below)
 import Logo from "./images/logo.svg";
+import FCC from "./images/free-code-camp.svg";
 import Form from "./images/form.svg";
+import AMP from "./images/aws-amplify.svg";
 
 // Hero Images (add your images to the /images directory with the same names)
 import HeroLight from "./images/hero-light.jpg";
@@ -91,7 +93,7 @@ export const skillData = [
 
 // Resume link (string - "https://YourResumeUrl") - I am using CloudFront to share my resume (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 export const resume =
-  "https://dpswezpu6i73j.cloudfront.net/Resume/Michael-Huber.pdf";
+  "https://dpswezpu6i73j.cloudfront.net/Resume/Resume-Michael-Huber.pdf";
 
 /* Projects
  ************************************************************** 
@@ -100,18 +102,34 @@ export const resume =
 export const filteredProjects = [
   "github-react-portfolio-template",
   "react-contact-form",
-  "React-JS",
+  "FCC-JavaScript-Algorithms-and-Data-Structures-Projects",
 ];
 
 // Replace the defualt GitHub image for matching repos below (images imported above - lines 13-14)
 export const projectCardImages = [
   {
-    name: "react-contact-form",
-    image: Form,
+    name: "CRA-Starter",
+    image: Logo,
   },
   {
-    name: "React-JS",
-    image: Logo,
+    name: "FCC-Front-End-Libraries-Projects",
+    image: FCC,
+  },
+  {
+    name: "FCC-JavaScript-Algorithms-and-Data-Structures-Projects",
+    image: FCC,
+  },
+  {
+    name: "FCC-Responsive-Web-Design-Projects",
+    image: FCC,
+  },
+  {
+    name: "Portfolio",
+    image: AMP,
+  },
+  {
+    name: "react-contact-form",
+    image: Form,
   },
 ];
 
