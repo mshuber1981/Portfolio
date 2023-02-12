@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { useSelector } from "react-redux";
-import { selectData } from "../pages/homeSlice";
 import { Element } from "react-scroll";
 // Data
 import { moreInfo } from "../data";
@@ -19,8 +17,6 @@ const StyledAboutMe = styled.section`
 `;
 
 export default function AboutMe() {
-  const { avatar_url, bio } = useSelector(selectData);
-
   return (
     <Element name={"About"} id="about">
       <StyledAboutMe className="section">
@@ -34,13 +30,13 @@ export default function AboutMe() {
           <Row className="align-items-center mt-5">
             <Col className="d-flex flex-column text-center">
               <Container>
-                <p>{bio}</p>
+                <p>I am a JavaScript Developer.</p>
                 {moreInfo && <p>{moreInfo}</p>}
               </Container>
             </Col>
             <Col className="d-none d-sm-block text-center">
               <img
-                src={avatar_url}
+                src="https://avatars1.githubusercontent.com/u/55626560?s=460&u=bbb9b547a6e0c4856997702307c52c6598c72f93&v=4"
                 alt="GitHub Avatar"
                 loading="lazy"
                 className="mx-auto rounded-circle"

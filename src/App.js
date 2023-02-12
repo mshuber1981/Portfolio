@@ -1,22 +1,16 @@
 import React from "react";
 import { useAppContext } from "./appContext";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchGitHubInfo,
-  selectError,
-  selectIsLoading,
-} from "./pages/homeSlice";
+import { useDispatch } from "react-redux";
 import { fetchGitHubReops } from "./pages/allProjectsSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 // Components
-import { Container } from "react-bootstrap";
-import { Loading } from "./components/globalStyledComponents";
 import ScrollToTop from "./components/ScrollToTop";
 import GlobalStyles from "./components/GlobalStyles";
 // Pages
 import Home from "./pages/Home";
 import AllProjects from "./pages/AllProjects";
+import MyStory from "./pages/MyStory";
 import NotFound from "./pages/NotFound";
 
 const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -35,8 +29,6 @@ const themes = {
 
 export default function App() {
   const { theme, setTheme } = useAppContext();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
   const dispatch = useDispatch();
 
   React.useEffect(
@@ -44,7 +36,6 @@ export default function App() {
       const updateTheme = () =>
         darkMode ? setTheme("dark") : setTheme("light");
       updateTheme();
-      dispatch(fetchGitHubInfo());
       dispatch(fetchGitHubReops());
     },
     [setTheme, dispatch]
@@ -56,37 +47,18 @@ export default function App() {
       e.matches ? setTheme("dark") : setTheme("light")
     );
 
-  if (isLoading) {
-    return (
+  return (
+    <BrowserRouter>
       <ThemeProvider theme={themes[theme]}>
+        <ScrollToTop />
         <GlobalStyles />
-        <Container className="d-flex vh-100 align-items-center">
-          <Loading />
-        </Container>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/All-Projects" element={<AllProjects />} />
+          <Route path="/My-Story" element={<MyStory />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </ThemeProvider>
-    );
-  } else if (error) {
-    return (
-      <ThemeProvider theme={themes[theme]}>
-        <GlobalStyles />
-        <Container className="d-flex vh-100 align-items-center justify-content-center">
-          <h2>{error}</h2>
-        </Container>
-      </ThemeProvider>
-    );
-  } else {
-    return (
-      <BrowserRouter>
-        <ThemeProvider theme={themes[theme]}>
-          <ScrollToTop />
-          <GlobalStyles />
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/All-Projects" element={<AllProjects />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </ThemeProvider>
-      </BrowserRouter>
-    );
-  }
+    </BrowserRouter>
+  );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { useAppContext } from "../appContext";
 import { useSelector } from "react-redux";
-import { selectData as homeData } from "../pages/homeSlice";
 import { selectData, selectError, selectIsLoading } from "./allProjectsSlice";
 import { Element } from "react-scroll";
 import styled from "styled-components";
@@ -52,14 +51,10 @@ export default function AllProjects() {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const data = useSelector(selectData);
-  const { name } = useSelector(homeData);
 
-  React.useEffect(
-    function () {
-      document.title = `${name} | All Projects`;
-    },
-    [name]
-  );
+  React.useEffect(function () {
+    document.title = "Michael Huber | All Projects";
+  }, []);
 
   React.useEffect(
     function () {
@@ -123,6 +118,14 @@ export default function AllProjects() {
       setActivePage(1);
     },
     [searchInput]
+  );
+
+  React.useEffect(
+    function () {
+      // Anytime the active page changes scroll to top
+      window.scrollTo(0, 0);
+    },
+    [activePage]
   );
 
   if (isLoading) {

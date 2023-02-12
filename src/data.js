@@ -6,7 +6,6 @@ import {
   FaReact,
   FaGitAlt,
   FaAws,
-  FaLinkedin,
 } from "react-icons/fa";
 import { SiJavascript, SiStyledcomponents, SiRedux } from "react-icons/si";
 
@@ -29,15 +28,12 @@ export { HeroDark as Dark };
 */
 export const githubUsername = "mshuber1981";
 
-// Blog/alternate link icon
-export const Blog = <FaLinkedin />;
-
 /* About Me
  **************************************************************
   Add a second paragraph for the about me section.
 */
 export const moreInfo =
-  "I enjoy learning about technology and helping others use it to improve their lives and be more productive. I built this site with React, Bootstrap, Redux, and the GitHub REST API.";
+  "I enjoy learning about technology and helping others use it to improve their lives and be more productive. I built this site with React, Bootstrap, Redux, AWS Amplify, and the GitHub REST API.";
 
 /* Skills
  ************************************************************** 

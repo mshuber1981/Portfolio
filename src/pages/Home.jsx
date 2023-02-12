@@ -1,7 +1,5 @@
 import React from "react";
 import { Element } from "react-scroll";
-import { useSelector } from "react-redux";
-import { selectData } from "../pages/homeSlice";
 // Components
 import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
@@ -13,14 +11,9 @@ import { BackToTop } from "../components/globalStyledComponents";
 import Footer from "../components/Footer";
 
 export default function Home() {
-  const { name } = useSelector(selectData);
-
-  React.useEffect(
-    function () {
-      document.title = `${name} | Portfolio`;
-    },
-    [name]
-  );
+  React.useEffect(function () {
+    document.title = "Michael Huber | Portfolio";
+  }, []);
 
   return (
     <>
