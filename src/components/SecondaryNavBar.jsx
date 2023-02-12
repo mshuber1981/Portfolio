@@ -61,6 +61,17 @@ export default function SecondaryNavBar() {
                   All Projects
                 </Link>
               </Nav.Item>
+              <Nav.Item>
+                <Link
+                  to="/My-Story"
+                  className={
+                    pathname === "/My-Story" ? "nav-link active" : "nav-link"
+                  }
+                  onClick={toggleExpanded}
+                >
+                  My Story
+                </Link>
+              </Nav.Item>
             </Nav>
             <Nav>
               <ToggleSwitch />
