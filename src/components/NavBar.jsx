@@ -105,10 +105,20 @@ export default function NavBar() {
                     More
                   </Dropdown.Toggle>
                   <Dropdown.Menu>
-                    <Dropdown.Item onClick={() => navigate("/All-Projects")}>
+                    <Dropdown.Item
+                      onClick={() => {
+                        navigate("/All-Projects");
+                        closeExpanded();
+                      }}
+                    >
                       All Projects
                     </Dropdown.Item>
-                    <Dropdown.Item onClick={() => navigate("/My-Story")}>
+                    <Dropdown.Item
+                      onClick={() => {
+                        navigate("/My-Story");
+                        closeExpanded();
+                      }}
+                    >
                       My Story
                     </Dropdown.Item>
                   </Dropdown.Menu>
