@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: mikeyhuber.me
+Token: 44a6d7ff1fc23d404e2dc407a1f29a5705f28d29cfd05a4476a22d7e8747501a
