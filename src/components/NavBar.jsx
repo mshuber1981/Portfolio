@@ -1,14 +1,16 @@
 import React from "react";
 import { useAppContext } from "../appContext";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-scroll";
 // Components
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Dropdown, Nav, Navbar } from "react-bootstrap";
 import { FixedNavSpacer, ToggleSwitch } from "./globalStyledComponents";
 // Images
 import Logo from "../images/logo.svg";
 
 export default function NavBar() {
   const { theme, isExpanded, closeExpanded, toggleExpanded } = useAppContext();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -92,6 +94,25 @@ export default function NavBar() {
                 >
                   Contact
                 </Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Dropdown>
+                  <Dropdown.Toggle
+                    variant={
+                      theme === "light" ? "outline-dark" : "outline-light"
+                    }
+                  >
+                    More
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => navigate("/All-Projects")}>
+                      All Projects
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigate("/My-Story")}>
+                      My Story
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </Nav.Item>
             </Nav>
             <Nav>
