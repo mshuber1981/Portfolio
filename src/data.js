@@ -98,7 +98,7 @@ export const resume =
 export const filteredProjects = [
   "github-react-portfolio-template",
   "react-contact-form",
-  "FCC-JavaScript-Algorithms-and-Data-Structures-Projects",
+  "FCC-Front-End-Libraries-Projects",
 ];
 
 // Replace the defualt GitHub image for matching repos below (images imported above - lines 13-14)
