@@ -25,7 +25,7 @@ export default function NavBar() {
         fixed="top"
       >
         <Container>
-          <Navbar.Brand>
+          <Navbar.Brand href="https://mikeyhuber.me/">
             <img
               alt="React Logo"
               src={Logo}
