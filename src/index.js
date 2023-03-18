@@ -5,10 +5,15 @@ import { AppProvider } from "./appContext";
 // https://redux.js.org/tutorials/fundamentals/part-5-ui-react#passing-the-store-with-provider
 import { Provider } from "react-redux";
 import { store } from "./store";
+// Amplify
+import { Amplify } from "aws-amplify";
+import awsExports from "./aws-exports";
 // https://create-react-app.dev/docs/adding-bootstrap
 import "bootstrap/dist/css/bootstrap.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+
+Amplify.configure(awsExports);
 
 // https://reactjs.org/blog/2022/03/08/react-18-upgrade-guide.html
 const root = ReactDOM.createRoot(document.getElementById("root"));
