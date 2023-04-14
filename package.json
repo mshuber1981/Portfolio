@@ -6,7 +6,7 @@
   "dependencies": {
     "@iconify/react": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.3",
-    "aws-amplify": "^5.0.20",
+    "aws-amplify": "^5.0.25",
     "bootstrap": "^5.2.3",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
