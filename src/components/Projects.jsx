@@ -8,17 +8,14 @@ import {
 } from "../pages/allProjectsSlice";
 import { Link } from "react-router-dom";
 import { Element } from "react-scroll";
-import styled from "styled-components";
 // Data
 import { filteredProjects } from "../data";
 // Icons
-import { FaGithub } from "react-icons/fa";
+import { Icon } from "@iconify/react";
 // Components
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Title, Loading } from "./globalStyledComponents";
 import StyledCard from "./StyledCard";
-
-const StyledSection = styled.section``;
 
 export default function Projects() {
   const [mainProjects, setMainProjects] = React.useState([]);
@@ -47,7 +44,7 @@ export default function Projects() {
 
   return (
     <Element name={"Projects"} id="projects">
-      <StyledSection className="section">
+      <section className="section">
         <Container>
           <Container className="d-flex">
             <Title>
@@ -75,15 +72,16 @@ export default function Projects() {
                   name,
                   description,
                   html_url,
+                  homepage,
                 }) {
                   return (
                     <Col key={id}>
                       <StyledCard
-                        theme={theme}
                         image={image}
                         name={name}
                         description={description}
                         url={html_url}
+                        demo={homepage}
                       />
                     </Col>
                   );
@@ -98,7 +96,7 @@ export default function Projects() {
                         theme === "light" ? "outline-dark" : "outline-light"
                       }
                     >
-                      All <FaGithub /> Projects
+                      All <Icon icon="icomoon-free:github" /> Projects
                     </Button>
                   </Link>
                 </Container>
@@ -106,7 +104,7 @@ export default function Projects() {
             </>
           )}
         </Container>
-      </StyledSection>
+      </section>
     </Element>
   );
 }

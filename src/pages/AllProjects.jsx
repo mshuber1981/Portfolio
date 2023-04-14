@@ -1,11 +1,10 @@
 import React from "react";
-import { useAppContext } from "../appContext";
 import { useSelector } from "react-redux";
 import { selectData, selectError, selectIsLoading } from "./allProjectsSlice";
 import { Element } from "react-scroll";
 import styled from "styled-components";
 // Icons
-import { FaGithub, FaSearch } from "react-icons/fa";
+import { Icon } from "@iconify/react";
 // Components
 import {
   Col,
@@ -47,7 +46,6 @@ export default function AllProjects() {
   const [filteredResults, setFilteredResults] = React.useState([]);
   const [pageItems, setPageItems] = React.useState([]);
   const [activePage, setActivePage] = React.useState(1);
-  const { theme } = useAppContext();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const data = useSelector(selectData);
@@ -129,7 +127,7 @@ export default function AllProjects() {
             <Container className="d-flex">
               <Title>
                 <h2>
-                  All <FaGithub /> Projects
+                  All <Icon icon="mdi:github" /> Projects
                 </h2>
                 <div className="underline"></div>
               </Title>
@@ -149,7 +147,7 @@ export default function AllProjects() {
             <Container className="d-flex">
               <Title>
                 <h2>
-                  All <FaGithub /> Projects
+                  All <Icon icon="mdi:github" /> Projects
                 </h2>
                 <div className="underline"></div>
               </Title>
@@ -171,7 +169,7 @@ export default function AllProjects() {
             <Container className="d-flex">
               <Title>
                 <h2>
-                  All <FaGithub /> Projects
+                  All <Icon icon="mdi:github" /> Projects
                 </h2>
                 <div className="underline"></div>
               </Title>
@@ -179,7 +177,7 @@ export default function AllProjects() {
             <Container>
               <InputGroup className="mx-auto mb-3">
                 <InputGroup.Text id="search">
-                  <FaSearch />
+                  <Icon icon="ic:round-search" />
                 </InputGroup.Text>
                 <FormControl
                   placeholder="Project name"
@@ -201,15 +199,16 @@ export default function AllProjects() {
                       name,
                       description,
                       html_url,
+                      homepage,
                     }) {
                       return (
                         <Col key={id}>
                           <StyledCard
-                            theme={theme}
                             image={image}
                             name={name}
                             description={description}
                             url={html_url}
+                            demo={homepage}
                           />
                         </Col>
                       );
@@ -220,15 +219,16 @@ export default function AllProjects() {
                       name,
                       description,
                       html_url,
+                      homepage,
                     }) {
                       return (
                         <Col key={id}>
                           <StyledCard
-                            theme={theme}
                             image={image}
                             name={name}
                             description={description}
                             url={html_url}
+                            demo={homepage}
                           />
                         </Col>
                       );

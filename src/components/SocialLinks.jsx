@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // Icons
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { Icon } from "@iconify/react";
 
 const StyledSocialLinks = styled.div`
   a {
@@ -17,14 +17,14 @@ export default function SocialLinks() {
         aria-label="Check out my GitHub profile."
         className="link-icons"
       >
-        <FaGithub />
+        <Icon icon="icomoon-free:github" />
       </a>
       <a
         href="https://www.linkedin.com/in/mikeyhuber/"
         aria-label="Check out my LinkedIn profile."
         className="link-icons"
       >
-        <FaLinkedin />
+        <Icon icon="fa-brands:linkedin" />
       </a>
     </StyledSocialLinks>
   );

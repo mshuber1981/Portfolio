@@ -1,19 +1,12 @@
-// Skills icons - https://react-icons.github.io/react-icons/
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaBootstrap,
-  FaReact,
-  FaGitAlt,
-  FaAws,
-} from "react-icons/fa";
-import { SiJavascript, SiStyledcomponents, SiRedux } from "react-icons/si";
+// Skills icons - https://icon-sets.iconify.design/
+import { Icon } from "@iconify/react";
 
 // Projects Images (add your images to the /images directory and import below)
 import Logo from "./images/logo.svg";
-import FCC from "./images/free-code-camp.svg";
-import Form from "./images/form.svg";
-import AMP from "./images/aws-amplify.svg";
+import Gears from "./images/gears.svg";
+import fcc from "./images/free-code-camp.svg";
+import Amplify from "./images/aws-amplify.svg";
+import Form from "./images/form-line.svg";
 
 // Hero Images (add your images to the /images directory with the same names)
 import HeroLight from "./images/hero-light.jpg";
@@ -42,54 +35,54 @@ export const moreInfo =
 export const skillData = [
   {
     id: 1,
-    skill: <FaHtml5 className="display-4" />,
+    skill: <Icon icon="mdi:language-html5" className="display-4" />,
     name: "HTML5",
   },
   {
     id: 2,
-    skill: <FaCss3Alt className="display-4" />,
+    skill: <Icon icon="ion:logo-css3" className="display-4" />,
     name: "CSS3",
   },
   {
     id: 3,
-    skill: <SiJavascript className="display-4" />,
+    skill: <Icon icon="fa6-brands:js" className="display-4" />,
     name: "JavaScript",
   },
   {
     id: 4,
-    skill: <FaBootstrap className="display-4" />,
+    skill: <Icon icon="ri:bootstrap-fill" className="display-4" />,
     name: "BootStrap",
   },
   {
     id: 5,
-    skill: <FaReact className="display-4" />,
+    skill: <Icon icon="mdi:react" className="display-4" />,
     name: "React",
   },
   {
     id: 6,
-    skill: <SiStyledcomponents className="display-4" />,
+    skill: <Icon icon="file-icons:styledcomponents" className="display-4" />,
     name: "Styled Components",
   },
   {
     id: 7,
-    skill: <SiRedux className="display-4" />,
+    skill: <Icon icon="akar-icons:redux-fill" className="display-4" />,
     name: "Redux",
   },
   {
     id: 8,
-    skill: <FaGitAlt className="display-4" />,
+    skill: <Icon icon="bi:git" className="display-4" />,
     name: "Git",
   },
   {
     id: 9,
-    skill: <FaAws className="display-4" />,
+    skill: <Icon icon="fa-brands:aws" className="display-4" />,
     name: "AWS",
   },
 ];
 
 // Resume link (string - "https://YourResumeUrl") - I am using CloudFront to share my resume (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
 export const resume =
-  "https://dpswezpu6i73j.cloudfront.net/Resume/Resume-Michael-Huber.pdf";
+  "https://dpswezpu6i73j.cloudfront.net/Resume/Michael-Huber.pdf";
 
 /* Projects
  ************************************************************** 
@@ -97,35 +90,39 @@ export const resume =
 */
 export const filteredProjects = [
   "github-react-portfolio-template",
-  "react-contact-form",
+  "work-life",
   "FCC-Front-End-Libraries-Projects",
 ];
 
 // Replace the defualt GitHub image for matching repos below (images imported above - lines 13-14)
 export const projectCardImages = [
   {
-    name: "CRA-Starter",
+    name: "github-react-portfolio-template",
     image: Logo,
   },
   {
+    name: "work-life",
+    image: Gears,
+  },
+  {
     name: "FCC-Front-End-Libraries-Projects",
-    image: FCC,
+    image: fcc,
   },
   {
     name: "FCC-JavaScript-Algorithms-and-Data-Structures-Projects",
-    image: FCC,
-  },
-  {
-    name: "FCC-Responsive-Web-Design-Projects",
-    image: FCC,
+    image: fcc,
   },
   {
     name: "Portfolio",
-    image: AMP,
+    image: Amplify,
   },
   {
     name: "react-contact-form",
     image: Form,
+  },
+  {
+    name: "FCC-Responsive-Web-Design-Projects",
+    image: fcc,
   },
 ];
 
