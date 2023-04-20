@@ -124,6 +124,10 @@ export const projectCardImages = [
     name: "FCC-Responsive-Web-Design-Projects",
     image: fcc,
   },
+  {
+    name: "CRA-Starter",
+    image: Logo,
+  },
 ];
 
 /* Contact Info
