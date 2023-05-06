@@ -1,11 +1,11 @@
 import React from "react";
+import { useAppContext } from "../appContext";
 import { Link } from "react-scroll";
 import styled from "styled-components";
 // Icons
 import { Icon } from "@iconify/react";
 // Media
-import Logo from "../images/logo.svg";
-import { Light, Dark } from "../data";
+import { Light, Dark, LightHeroLogo, DarkHeroLogo } from "../data";
 // Components
 import { Col, Container, Row } from "react-bootstrap";
 import { Spin } from "./globalStyledComponents";
@@ -80,6 +80,8 @@ const StyledHero = styled.header`
 `;
 
 export default function Hero() {
+  const { theme } = useAppContext();
+
   return (
     <StyledHero>
       <Container>
@@ -91,11 +93,19 @@ export default function Hero() {
             </div>
           </Col>
           <Col className="d-none d-md-block">
-            <img
-              src={Logo}
-              alt="React Logo"
-              className="w-75 mx-auto hero-img"
-            />
+            {theme === "light" ? (
+              <img
+                src={LightHeroLogo}
+                alt="Snowflake"
+                className="w-75 mx-auto hero-img"
+              />
+            ) : (
+              <img
+                src={DarkHeroLogo}
+                alt="Spiral Galaxy"
+                className="w-75 mx-auto hero-img"
+              />
+            )}
           </Col>
         </Row>
         <Row className="align-items-end down-container">

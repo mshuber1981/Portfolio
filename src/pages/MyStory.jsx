@@ -1,10 +1,13 @@
 import React from "react";
+import { useAppContext } from "../appContext";
 import styled from "styled-components";
-import { Element } from "react-scroll";
+import { Element, Link } from "react-scroll";
+// Icons
+import { Icon } from "@iconify/react";
 // Images
 import AWS from "../images/AWS-Developer-Associate-2020.png";
 // Components
-import SecondaryNavBar from "../components/SecondaryNavBar";
+import { Button } from "react-bootstrap";
 import { BackToTop, Title } from "../components/globalStyledComponents";
 import Footer from "../components/Footer";
 
@@ -42,7 +45,7 @@ const StyledMain = styled.main`
     margin-top: 2rem;
 
     .tl-img {
-      width: 250px;
+      width: 225px;
       height: auto;
     }
   }
@@ -103,22 +106,29 @@ const StyledMain = styled.main`
 `;
 
 export default function MyStory() {
+  const { theme } = useAppContext();
+
   React.useEffect(function () {
-    document.title = "Michael Huber | My Story";
+    document.title = "My Story";
   }, []);
 
   return (
     <>
-      <Element name={"Story"}>
-        <SecondaryNavBar />
-      </Element>
       <StyledMain>
         <section className="section timeline">
           <Title>
             <h2>My Story</h2>
             <div className="underline"></div>
           </Title>
-
+          <Link to={"Present"} className="link-icons">
+            <Button
+              size="lg"
+              variant={theme === "light" ? "outline-dark" : "outline-light"}
+              className="mt-5"
+            >
+              Skip to present <Icon icon="material-symbols:arrow-drop-down" />
+            </Button>
+          </Link>
           <div className="timeline-center">
             {/* Item 1 */}
             <article className="timeline-item">
@@ -216,6 +226,7 @@ export default function MyStory() {
                   <img
                     src={AWS}
                     alt="AWS Developer Associate"
+                    loading="lazy"
                     className="tl-img mx-auto d-block"
                   />
                 </a>
@@ -224,8 +235,11 @@ export default function MyStory() {
             </article>
             {/* End Item 6 */}
             {/* Item 7 */}
+
             <article className="timeline-item">
-              <h4>Present</h4>
+              <Element name={"Present"} id="present">
+                <h4>Present</h4>
+              </Element>
               <p>
                 I am starting to feel comfortable with React, but I still have a
                 lot to learn. I started a new journey with Bayer in January of
@@ -235,13 +249,22 @@ export default function MyStory() {
                 backend uses AWS, so I am equally excited to learn what services
                 are used and why.
               </p>
+              <br />
+              <p>
+                Update 5/1/2023 - I made it through my first year! See all the
+                cool stuff I have been learning about here.{" "}
+                {<Icon icon="material-symbols:arrow-drop-down" />} <br />
+                <a href="https://mshuber1981.github.io/work-life/">
+                  https://mshuber1981.github.io/work-life/
+                </a>
+              </p>
               <span className="number"> 7 </span>
             </article>
             {/* End Item 7 */}
           </div>
         </section>
       </StyledMain>
-      <BackToTop home={"Story"} />
+      <BackToTop home={"Home"} />
       <Footer />
     </>
   );

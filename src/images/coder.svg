@@ -1,0 +1,19 @@
+<?xml version="1.0" ?><svg data-name="Layer 1" height="48" id="Layer_1" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg"><defs><style>
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+        stroke: #353535;
+        stroke-width: 2px;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-linecap: round;
+      }
+
+      .cls-1 {
+        stroke-linejoin: round;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+    </style></defs><title/><polyline class="cls-1" points="10 47 9 36 39 36 38 47"/><polyline class="cls-2" points="19.25 40.5 16.75 43 19.25 45.5"/><polyline class="cls-2" points="28.75 40.5 31.25 43 28.75 45.5"/><line class="cls-2" x1="22.33329" x2="25.66669" y1="45.5" y2="40.5"/><g><path class="cls-1" d="M28,22v4.5l11.5,4.7794A7,7,0,0,1,44,37.8178V47"/><path class="cls-3" d="M18,27.2545c.25569,2.3191,2.84179,4.1424,6,4.1424s5.74429-1.8233,6-4.1424"/><path class="cls-1" d="M24,23.1111h0a8,8,0,0,0,8-8V8.88888a8,8,0,0,0-8-8h0a8,8,0,0,0-8,8V15.1111a7.98328,7.98328,0,0,0,3.56629,6.6673L20,22.0833v4.4924L8.52549,31.2898A7.00014,7.00014,0,0,0,4,37.8379V47"/></g></svg>

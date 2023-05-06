@@ -1,7 +1,5 @@
 import React from "react";
-import { Element } from "react-scroll";
 // Components
-import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
 import AboutMe from "../components/AboutMe";
 import Skills from "../components/Skills";
@@ -12,15 +10,12 @@ import Footer from "../components/Footer";
 
 export default function Home() {
   React.useEffect(function () {
-    document.title = "Michael Huber | Portfolio";
+    document.title = "mikeyhuber.me";
   }, []);
 
   return (
     <>
-      <Element name={"Home"} id="home">
-        <NavBar />
-        <Hero />
-      </Element>
+      <Hero />
       <main>
         <AboutMe />
         <Skills />

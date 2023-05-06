@@ -3,10 +3,12 @@ import { useAppContext } from "./appContext";
 import { useDispatch } from "react-redux";
 import { fetchGitHubReops } from "./pages/allProjectsSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Element } from "react-scroll";
 import { ThemeProvider } from "styled-components";
 // Components
 import ScrollToTop from "./components/ScrollToTop";
 import GlobalStyles from "./components/GlobalStyles";
+import NavBar from "./components/NavBar";
 // Pages
 import Home from "./pages/Home";
 import AllProjects from "./pages/AllProjects";
@@ -52,6 +54,9 @@ export default function App() {
       <ThemeProvider theme={themes[theme]}>
         <ScrollToTop />
         <GlobalStyles />
+        <Element name={"Home"} id="home">
+          <NavBar />
+        </Element>
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/All-Projects" element={<AllProjects />} />

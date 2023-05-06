@@ -1,11 +1,11 @@
 import React from "react";
+import { useAppContext } from "../appContext";
 import styled from "styled-components";
 // Media
-import Logo from "../images/logo.svg";
+import { LightHeroLogo, DarkHeroLogo } from "../data";
 // Components
 import { Container } from "react-bootstrap";
 import { Spin } from "../components/globalStyledComponents";
-import NotFoundNavBar from "../components/SecondaryNavBar";
 
 const StyledNotFound = styled.main`
   display: flex;
@@ -34,17 +34,30 @@ const StyledNotFound = styled.main`
 `;
 
 export default function NotFound() {
+  const { theme } = useAppContext();
+
   React.useEffect(function () {
-    document.title = "Michael Huber | Portfolio";
+    document.title = "404";
   }, []);
 
   return (
     <>
-      <NotFoundNavBar />
       <StyledNotFound>
         <Container className="d-flex justify-content-center">
           <span>4</span>
-          <img src={Logo} alt="React Logo" className="logo-img" />
+          {theme === "light" ? (
+            <img
+              src={LightHeroLogo}
+              alt="Snowflake"
+              className="w-75 mx-auto hero-img"
+            />
+          ) : (
+            <img
+              src={DarkHeroLogo}
+              alt="Spiral Galaxy"
+              className="w-75 mx-auto hero-img"
+            />
+          )}
           <span>4</span>
         </Container>
         <p className="text-center">Sorry, page not found...</p>

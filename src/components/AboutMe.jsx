@@ -1,22 +1,46 @@
+import { useAppContext } from "../appContext";
 import styled from "styled-components";
 import { Element } from "react-scroll";
 // Data
 import { moreInfo } from "../data";
+// Icons
+import { Icon } from "@iconify/react";
+import { ReactComponent as UD } from "../images/ud.svg";
 // Components
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { Title } from "./globalStyledComponents";
 
 const StyledAboutMe = styled.section`
   p {
     font-size: 1.25rem;
   }
+
   .img {
     width: 18rem;
     height: 18rem;
   }
+
+  .crypto {
+    button {
+      height: 4.25rem;
+      margin: 1rem 1rem;
+      background: ${({ theme }) => (theme.name === "light" ? "" : "#797B7B")};
+
+      /* svg {
+        line-height: 0;
+      } */
+
+      &:hover {
+        background: ${({ theme }) =>
+          theme.name === "light" ? "black" : "white"};
+      }
+    }
+  }
 `;
 
 export default function AboutMe() {
+  const { theme } = useAppContext();
+
   return (
     <Element name={"About"} id="about">
       <StyledAboutMe className="section">
@@ -32,6 +56,14 @@ export default function AboutMe() {
               <Container>
                 <p>I am a JavaScript Developer.</p>
                 {moreInfo && <p>{moreInfo}</p>}
+                <p>
+                  Checkout the template I used to create this performant,
+                  accessible, progressive web application here.{" "}
+                  {<Icon icon="material-symbols:arrow-drop-down" />} <br />
+                  <a href="https://github.com/mshuber1981/github-react-portfolio-template">
+                    github.com/mshuber1981/github-react-portfolio-template
+                  </a>
+                </p>
               </Container>
             </Col>
             <Col className="d-none d-sm-block text-center">
@@ -44,6 +76,28 @@ export default function AboutMe() {
               />
             </Col>
           </Row>
+          <Container className="crypto d-flex flex-wrap w-100 justify-content-center mt-5">
+            <a href="https://ud.me/mikeyhuber.crypto">
+              <Button
+                size="lg"
+                variant={theme === "light" ? "outline-dark" : "outline-light"}
+                className="crypto"
+              >
+                <UD /> <Icon icon="logos:bitcoin" />{" "}
+                <Icon icon="logos:ethereum-color" />
+              </Button>
+            </a>
+            <a href="https://handle.me/mikeyhuber">
+              <Button
+                size="lg"
+                variant={theme === "light" ? "outline-dark" : "outline-light"}
+                className="crypto"
+              >
+                <Icon icon="fluent-emoji-flat:heavy-dollar-sign" /> ADA Handle{" "}
+                <Icon icon="logos:cardano-icon" />
+              </Button>
+            </a>
+          </Container>
         </Container>
       </StyledAboutMe>
     </Element>

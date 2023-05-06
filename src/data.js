@@ -1,19 +1,27 @@
 // Skills icons - https://icon-sets.iconify.design/
 import { Icon } from "@iconify/react";
 
+// Logos
+import Logo from "./images/coder.svg";
+import Snowflake from "./images/snowflake.svg";
+import Galaxy from "./images/galaxy.svg";
 // Projects Images (add your images to the /images directory and import below)
-import Logo from "./images/logo.svg";
+import ReactLogo from "./images/reactLogo.svg";
 import Gears from "./images/gears.svg";
 import fcc from "./images/free-code-camp.svg";
 import Amplify from "./images/aws-amplify.svg";
 import Form from "./images/form-line.svg";
-
 // Hero Images (add your images to the /images directory with the same names)
 import HeroLight from "./images/hero-light.jpg";
 import HeroDark from "./images/hero-dark.jpg";
-// If you change the import names above then you need to change the export names below
+
+// Image exports
 export { HeroLight as Light };
 export { HeroDark as Dark };
+// Logo exports
+export { Logo as NavLogo };
+export { Snowflake as LightHeroLogo };
+export { Galaxy as DarkHeroLogo };
 
 /* START HERE
  **************************************************************
@@ -98,7 +106,7 @@ export const filteredProjects = [
 export const projectCardImages = [
   {
     name: "github-react-portfolio-template",
-    image: Logo,
+    image: ReactLogo,
   },
   {
     name: "work-life",
@@ -126,7 +134,7 @@ export const projectCardImages = [
   },
   {
     name: "CRA-Starter",
-    image: Logo,
+    image: ReactLogo,
   },
 ];
 
