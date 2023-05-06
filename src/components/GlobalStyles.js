@@ -36,8 +36,7 @@ a:hover {
   border-bottom: var(--border);
 
     img {
-    background: ${({ theme }) =>
-      theme.name === "light" ? "#F5F2E8" : "white"};
+    background: ${({ theme }) => (theme.name === "light" ? "" : "white")};
   }
 }
 

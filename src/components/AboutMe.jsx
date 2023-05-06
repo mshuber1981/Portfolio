@@ -21,14 +21,11 @@ const StyledAboutMe = styled.section`
   }
 
   .crypto {
+    height: 10rem;
     button {
       height: 4.25rem;
       margin: 1rem 1rem;
       background: ${({ theme }) => (theme.name === "light" ? "" : "#797B7B")};
-
-      /* svg {
-        line-height: 0;
-      } */
 
       &:hover {
         background: ${({ theme }) =>
@@ -76,7 +73,7 @@ export default function AboutMe() {
               />
             </Col>
           </Row>
-          <Container className="crypto d-flex flex-wrap w-100 justify-content-center mt-5">
+          <Container className="crypto d-flex flex-wrap w-100 justify-content-center align-items-center mt-5">
             <a href="https://ud.me/mikeyhuber.crypto">
               <Button
                 size="lg"
@@ -94,6 +91,16 @@ export default function AboutMe() {
                 className="crypto"
               >
                 <Icon icon="fluent-emoji-flat:heavy-dollar-sign" /> ADA Handle{" "}
+                <Icon icon="logos:cardano-icon" />
+              </Button>
+            </a>
+            <a href="https://www.jpg.store/MikeyHuber">
+              <Button
+                size="lg"
+                variant={theme === "light" ? "outline-dark" : "outline-light"}
+                className="crypto"
+              >
+                <Icon icon="bi:filetype-jpg" /> jpg.store{" "}
                 <Icon icon="logos:cardano-icon" />
               </Button>
             </a>

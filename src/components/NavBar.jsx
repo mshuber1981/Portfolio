@@ -105,7 +105,11 @@ export default function NavBar() {
               src={NavLogo}
               width="35"
               height="35"
-              className="rounded-circle"
+              className={
+                theme === "light"
+                  ? "rounded-circle border border-dark"
+                  : "rounded-circle border border-light"
+              }
             />
           </Navbar.Brand>
           <Navbar.Toggle
