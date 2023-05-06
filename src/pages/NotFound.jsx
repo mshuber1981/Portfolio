@@ -43,19 +43,19 @@ export default function NotFound() {
   return (
     <>
       <StyledNotFound>
-        <Container className="d-flex justify-content-center">
+        <Container className="d-flex justify-content-center w-25">
           <span>4</span>
           {theme === "light" ? (
             <img
               src={LightHeroLogo}
               alt="Snowflake"
-              className="w-75 mx-auto hero-img"
+              className="w-25 mx-auto hero-img"
             />
           ) : (
             <img
               src={DarkHeroLogo}
               alt="Spiral Galaxy"
-              className="w-75 mx-auto hero-img"
+              className="w-25 mx-auto hero-img"
             />
           )}
           <span>4</span>
