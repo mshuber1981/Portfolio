@@ -153,7 +153,7 @@ export default function NavBar() {
                   })}
               {pathname === "/" && (
                 <Nav.Item>
-                  <Dropdown>
+                  <Dropdown className="mb-2">
                     <Dropdown.Toggle
                       variant={
                         theme === "light" ? "outline-dark" : "outline-light"
