@@ -1,3 +1,4 @@
+import React from "react";
 import { useAppContext } from "../appContext";
 import styled from "styled-components";
 import { Element } from "react-scroll";
@@ -29,11 +30,10 @@ const StyledAboutMe = styled.section`
       align-items: center;
       height: 4.25rem;
       margin: 1rem 1rem;
-      background: ${({ theme }) => (theme.name === "light" ? "" : "#515151")};
+      background: #cacaca;
 
       &:hover {
-        background: ${({ theme }) =>
-          theme.name === "light" ? "black" : "white"};
+        background: white;
       }
     }
   }
@@ -67,7 +67,7 @@ export default function AboutMe() {
                 </p>
               </Container>
             </Col>
-            <Col className="d-none d-sm-block text-center">
+            <Col className="d-none d-md-block text-center">
               <img
                 src="https://avatars1.githubusercontent.com/u/55626560?s=460&u=bbb9b547a6e0c4856997702307c52c6598c72f93&v=4"
                 alt="GitHub Avatar"
