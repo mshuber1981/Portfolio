@@ -21,7 +21,7 @@ export default function ScrollToTop() {
         if (element) {
           element.scrollIntoView();
         } else {
-          navigate("404", { replace: false });
+          navigate("404", { replace: true });
         }
       }
     },

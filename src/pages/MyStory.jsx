@@ -120,11 +120,10 @@ export default function MyStory() {
             <h2>My Story</h2>
             <div className="underline"></div>
           </Title>
-          <Link to={"Present"} className="link-icons">
+          <Link to={"Present"} offset={-62} className="link-icons">
             <Button
               size="lg"
               variant={theme === "light" ? "outline-dark" : "outline-light"}
-              className="mt-5"
             >
               Skip to present <Icon icon="material-symbols:arrow-drop-down" />
             </Button>
@@ -255,7 +254,7 @@ export default function MyStory() {
                 cool stuff I have been learning about here.{" "}
                 {<Icon icon="material-symbols:arrow-drop-down" />} <br />
                 <a href="https://mshuber1981.github.io/work-life/">
-                  https://mshuber1981.github.io/work-life/
+                  mshuber1981.github.io/work-life/
                 </a>
               </p>
               <span className="number"> 7 </span>

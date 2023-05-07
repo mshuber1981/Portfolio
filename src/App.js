@@ -61,6 +61,7 @@ export default function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/All-Projects" element={<AllProjects />} />
           <Route path="/My-Story" element={<MyStory />} />
+          <Route path="/404" element={<NotFound />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>
