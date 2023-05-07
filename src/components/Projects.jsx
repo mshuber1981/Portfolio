@@ -89,7 +89,7 @@ export default function Projects() {
               </Row>
               {data.length > 3 && (
                 <Container className="text-center mt-5">
-                  <Link to="/All-Projects">
+                  <Link to="/all-projects">
                     <Button
                       size="lg"
                       variant={

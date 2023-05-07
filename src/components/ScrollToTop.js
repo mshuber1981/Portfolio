@@ -18,15 +18,10 @@ export default function ScrollToTop() {
       else {
         const id = hash.replace("#", "");
         const element = document.getElementById(id);
-        const cords = element.getBoundingClientRect();
         if (element) {
-          element.scrollIntoView({
-            top: cords.top,
-            left: 100,
-            behavior: "smooth",
-          });
+          element.scrollIntoView();
         } else {
-          navigate("404", { replace: true });
+          navigate(pathname);
         }
       }
     },

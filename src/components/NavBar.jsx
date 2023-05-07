@@ -13,8 +13,8 @@ import { Container, Dropdown, Nav, Navbar } from "react-bootstrap";
 const navLinks = {
   routes: [
     { id: "1R", name: "Home", route: "/" },
-    { id: "2R", name: "All Projects", route: "/All-Projects" },
-    { id: "3R", name: "My Story", route: "/My-Story" },
+    { id: "2R", name: "All Projects", route: "/all-projects" },
+    { id: "3R", name: "My Story", route: "/my-story" },
   ],
   to: [
     { id: "1T", name: "Home", to: "Home" },
@@ -164,7 +164,7 @@ export default function NavBar() {
                     <Dropdown.Menu>
                       <Dropdown.Item
                         onClick={() => {
-                          navigate("/All-Projects");
+                          navigate("/all-projects");
                           closeExpanded();
                         }}
                       >
@@ -172,7 +172,7 @@ export default function NavBar() {
                       </Dropdown.Item>
                       <Dropdown.Item
                         onClick={() => {
-                          navigate("/My-Story");
+                          navigate("/my-story");
                           closeExpanded();
                         }}
                       >
