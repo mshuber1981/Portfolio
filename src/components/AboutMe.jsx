@@ -86,28 +86,7 @@ export default function AboutMe() {
             >
               <div>
                 <UD /> <Icon icon="logos:bitcoin" />{" "}
-                <Icon icon="logos:ethereum-color" />
-              </div>
-            </Button>
-            <Button
-              size="lg"
-              variant={theme === "light" ? "outline-dark" : "outline-light"}
-              href="https://handle.me/mikeyhuber"
-              aria-label="ADA Handle"
-            >
-              <div>
-                <Icon icon="fluent-emoji-flat:heavy-dollar-sign" /> ADA Handle{" "}
-                <Icon icon="logos:cardano-icon" />
-              </div>
-            </Button>
-            <Button
-              size="lg"
-              variant={theme === "light" ? "outline-dark" : "outline-light"}
-              href="https://www.jpg.store/MikeyHuber"
-              aria-label="jpg store profile"
-            >
-              <div>
-                <Icon icon="bi:filetype-jpg" /> jpg.store{" "}
+                <Icon icon="logos:ethereum-color" />{" "}
                 <Icon icon="logos:cardano-icon" />
               </div>
             </Button>
