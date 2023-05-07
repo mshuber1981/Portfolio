@@ -22,6 +22,8 @@ const StyledAboutMe = styled.section`
 
   .crypto {
     height: 10rem;
+    margin: 2.5rem 0;
+
     button {
       height: 4.25rem;
       margin: 1rem 1rem;
@@ -73,7 +75,7 @@ export default function AboutMe() {
               />
             </Col>
           </Row>
-          <Container className="crypto d-flex flex-wrap w-100 justify-content-center align-items-center mt-5">
+          <Container className="crypto d-flex flex-wrap w-100 justify-content-center align-items-center">
             <a href="https://ud.me/mikeyhuber.crypto">
               <Button
                 size="lg"
