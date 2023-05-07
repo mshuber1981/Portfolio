@@ -1,11 +1,10 @@
 import React from "react";
 import { useAppContext } from "../appContext";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-// Media
-import { LightHeroLogo, DarkHeroLogo } from "../data";
 // Components
-import { Container } from "react-bootstrap";
-import { Spin } from "../components/globalStyledComponents";
+import { Button, Container } from "react-bootstrap";
+import Vortex from "../components/Vortex";
 
 const StyledNotFound = styled.main`
   display: flex;
@@ -14,21 +13,29 @@ const StyledNotFound = styled.main`
   align-items: center;
   min-height: calc(100vh - var(--nav-height));
 
+  .container {
+    width: 75%;
+  }
+
   span {
-    font-size: 5rem;
+    z-index: 1;
+    font-size: 3rem;
+    margin: 0 1rem;
   }
 
-  p {
-    font-size: 2rem;
+  .not-found {
+    margin-top: 4rem;
   }
 
-  .logo-img {
-    width: 10rem;
+  @media screen and (min-width: 667px) {
+    .container {
+      width: 50%;
+    }
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    img {
-      animation: ${Spin} infinite 20s linear;
+  @media screen and (min-width: 1180px) {
+    .container {
+      width: 25%;
     }
   }
 `;
@@ -43,24 +50,21 @@ export default function NotFound() {
   return (
     <>
       <StyledNotFound>
-        <Container className="d-flex justify-content-evenly w-25">
+        <Container className="d-flex justify-content-evenly mt-5 container">
           <span>4</span>
-          {theme === "light" ? (
-            <img
-              src={LightHeroLogo}
-              alt="Snowflake"
-              className="mx-auto logo-img"
-            />
-          ) : (
-            <img
-              src={DarkHeroLogo}
-              alt="Spiral Galaxy"
-              className="mx-auto logo-img"
-            />
-          )}
+          <Vortex />
           <span>4</span>
         </Container>
-        <p className="text-center">Sorry, page not found...</p>
+        <p className="not-found">Not found...</p>
+        <Link to={"/"}>
+          <Button
+            size="lg"
+            variant={theme === "light" ? "outline-dark" : "outline-light"}
+            className="mt-2"
+          >
+            Home
+          </Button>
+        </Link>
       </StyledNotFound>
     </>
   );

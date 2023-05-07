@@ -5,15 +5,6 @@ import { Link } from "react-scroll/modules";
 import { Icon } from "@iconify/react";
 
 // Animations
-export const Spin = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
 const spinner = keyframes`
     to {
         transform: rotate(360deg)

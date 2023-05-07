@@ -1,14 +1,13 @@
 import React from "react";
-import { useAppContext } from "../appContext";
 import { Link } from "react-scroll";
 import styled from "styled-components";
 // Icons
 import { Icon } from "@iconify/react";
 // Media
-import { Light, Dark, LightHeroLogo, DarkHeroLogo } from "../data";
+import { Light, Dark } from "../data";
 // Components
 import { Col, Container, Row } from "react-bootstrap";
-import { Spin } from "./globalStyledComponents";
+import Vortex from "./Vortex";
 import SocialLinks from "./SocialLinks";
 
 const StyledHero = styled.header`
@@ -30,7 +29,7 @@ const StyledHero = styled.header`
       theme.name === "light"
         ? "linear-gradient(135deg, var(--primary), var(--bs-light))"
         : "linear-gradient(135deg, var(--primary), var(--bs-dark))"};
-    z-index: -2;
+    z-index: -3;
   }
 
   /* Overlay for contrast */
@@ -45,16 +44,17 @@ const StyledHero = styled.header`
       theme.name === "light"
         ? "rgba(255, 255, 255, 0.2)"
         : "rgba(0, 0, 0, 0.2)"};
-    z-index: -1;
+    z-index: -2;
   }
 
   .down-container {
     height: 10rem;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .hero-img {
-      animation: ${Spin} infinite 20s linear;
+  @media screen and (min-width: 820px) {
+    .vortex {
+      width: 12rem;
+      height: 12rem;
     }
   }
 
@@ -65,6 +65,11 @@ const StyledHero = styled.header`
           ? `url(${Light}) top center fixed no-repeat`
           : `url(${Dark}) top center fixed no-repeat`};
       background-size: 100vw auto;
+    }
+
+    .vortex {
+      width: 15rem;
+      height: 15rem;
     }
   }
 
@@ -77,11 +82,14 @@ const StyledHero = styled.header`
       background-size: cover;
     }
   }
+
+  .vortex {
+    width: 20rem;
+    height: 20rem;
+  }
 `;
 
 export default function Hero() {
-  const { theme } = useAppContext();
-
   return (
     <StyledHero>
       <Container>
@@ -93,19 +101,7 @@ export default function Hero() {
             </div>
           </Col>
           <Col className="d-none d-md-block">
-            {theme === "light" ? (
-              <img
-                src={LightHeroLogo}
-                alt="Snowflake"
-                className="w-75 mx-auto hero-img"
-              />
-            ) : (
-              <img
-                src={DarkHeroLogo}
-                alt="Spiral Galaxy"
-                className="w-75 mx-auto hero-img"
-              />
-            )}
+            <Vortex />
           </Col>
         </Row>
         <Row className="align-items-end down-container">

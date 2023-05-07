@@ -234,7 +234,6 @@ export default function MyStory() {
             </article>
             {/* End Item 6 */}
             {/* Item 7 */}
-
             <article className="timeline-item">
               <Element name={"Present"} id="present">
                 <h4>Present</h4>
