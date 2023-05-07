@@ -45,8 +45,8 @@ const StyledMain = styled.main`
     margin-top: 2rem;
 
     .tl-img {
-      width: 225px;
-      height: auto;
+      width: 200px;
+      height: 200px;
     }
   }
 

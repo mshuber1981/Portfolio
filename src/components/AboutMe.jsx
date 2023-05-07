@@ -24,10 +24,12 @@ const StyledAboutMe = styled.section`
     height: 10rem;
     margin: 2.5rem 0;
 
-    button {
+    a {
+      display: flex;
+      align-items: center;
       height: 4.25rem;
       margin: 1rem 1rem;
-      background: ${({ theme }) => (theme.name === "light" ? "" : "#797B7B")};
+      background: ${({ theme }) => (theme.name === "light" ? "" : "#515151")};
 
       &:hover {
         background: ${({ theme }) =>
@@ -76,36 +78,39 @@ export default function AboutMe() {
             </Col>
           </Row>
           <Container className="crypto d-flex flex-wrap w-100 justify-content-center align-items-center">
-            <a href="https://ud.me/mikeyhuber.crypto">
-              <Button
-                size="lg"
-                variant={theme === "light" ? "outline-dark" : "outline-light"}
-                className="crypto"
-              >
+            <Button
+              size="lg"
+              variant={theme === "light" ? "outline-dark" : "outline-light"}
+              href="https://ud.me/mikeyhuber.crypto"
+              aria-label="Unstoppable Domains Profile"
+            >
+              <div>
                 <UD /> <Icon icon="logos:bitcoin" />{" "}
                 <Icon icon="logos:ethereum-color" />
-              </Button>
-            </a>
-            <a href="https://handle.me/mikeyhuber">
-              <Button
-                size="lg"
-                variant={theme === "light" ? "outline-dark" : "outline-light"}
-                className="crypto"
-              >
+              </div>
+            </Button>
+            <Button
+              size="lg"
+              variant={theme === "light" ? "outline-dark" : "outline-light"}
+              href="https://handle.me/mikeyhuber"
+              aria-label="ADA Handle"
+            >
+              <div>
                 <Icon icon="fluent-emoji-flat:heavy-dollar-sign" /> ADA Handle{" "}
                 <Icon icon="logos:cardano-icon" />
-              </Button>
-            </a>
-            <a href="https://www.jpg.store/MikeyHuber">
-              <Button
-                size="lg"
-                variant={theme === "light" ? "outline-dark" : "outline-light"}
-                className="crypto"
-              >
+              </div>
+            </Button>
+            <Button
+              size="lg"
+              variant={theme === "light" ? "outline-dark" : "outline-light"}
+              href="https://www.jpg.store/MikeyHuber"
+              aria-label="jpg store profile"
+            >
+              <div>
                 <Icon icon="bi:filetype-jpg" /> jpg.store{" "}
                 <Icon icon="logos:cardano-icon" />
-              </Button>
-            </a>
+              </div>
+            </Button>
           </Container>
         </Container>
       </StyledAboutMe>

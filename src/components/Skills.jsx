@@ -30,15 +30,14 @@ export default function Skills() {
             })}
           </Row>
           {resume && (
-            <a href={resume}>
-              <Button
-                size="lg"
-                variant={theme === "light" ? "outline-dark" : "outline-light"}
-                className="mt-5"
-              >
-                R&eacute;sum&eacute;
-              </Button>
-            </a>
+            <Button
+              size="lg"
+              variant={theme === "light" ? "outline-dark" : "outline-light"}
+              className="mt-5"
+              href={resume}
+            >
+              R&eacute;sum&eacute;
+            </Button>
           )}
         </Container>
       </section>

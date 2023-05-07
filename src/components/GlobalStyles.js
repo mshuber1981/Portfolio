@@ -28,6 +28,10 @@ body {
   color: ${({ theme }) => theme.color};
 }
 
+a {
+  color: ${({ theme }) => theme.color};
+}
+
 a:hover {
   cursor: pointer;
 }
