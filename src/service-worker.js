@@ -53,7 +53,8 @@ registerRoute(
   ({ url }) =>
     (url.origin === self.location.origin && url.pathname.endsWith(".png")) ||
     (url.origin === self.location.origin && url.pathname.endsWith(".svg")) ||
-    (url.origin === self.location.origin && url.pathname.endsWith(".jpg")), // Customize this strategy as needed, e.g., by changing to CacheFirst.
+    (url.origin === self.location.origin && url.pathname.endsWith(".jpg")),
+  // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
     cacheName: "images",
     plugins: [

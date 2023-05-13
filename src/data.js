@@ -3,8 +3,6 @@ import { Icon } from "@iconify/react";
 
 // Logos
 import Logo from "./images/coder.svg";
-import Snowflake from "./images/snowflake.svg";
-import Galaxy from "./images/galaxy.svg";
 // Projects Images (add your images to the /images directory and import below)
 import ReactLogo from "./images/reactLogo.svg";
 import Gears from "./images/gears.svg";
@@ -20,26 +18,15 @@ export { HeroLight as Light };
 export { HeroDark as Dark };
 // Logo exports
 export { Logo as NavLogo };
-export { Snowflake as LightHeroLogo };
-export { Galaxy as DarkHeroLogo };
 
-/* START HERE
- **************************************************************
-  Add your GitHub username (string - "YourUsername") below.
-*/
+// GitHub username
 export const githubUsername = "mshuber1981";
 
-/* About Me
- **************************************************************
-  Add a second paragraph for the about me section.
-*/
+// About Me
 export const moreInfo =
   "I enjoy learning about technology and helping others use it to improve their lives and be more productive. I built this site with React, Bootstrap, Redux, AWS Amplify, and the GitHub REST API.";
 
-/* Skills
- ************************************************************** 
-  Add or remove skills in the SAME format below, there must be one icon imported above per skill below.
-*/
+// Skills
 export const skillData = [
   {
     id: 1,
@@ -88,21 +75,18 @@ export const skillData = [
   },
 ];
 
-// Resume link (string - "https://YourResumeUrl") - I am using CloudFront to share my resume (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html)
+// Resume link
 export const resume =
   "https://dpswezpu6i73j.cloudfront.net/Resume/Michael-Huber.pdf";
 
-/* Projects
- ************************************************************** 
-  List the repo names (string - "your-repo-name") you want to include (they will be sorted alphabetically). If empty, only the first 3 will be included.
-*/
+// Projects
 export const filteredProjects = [
   "github-react-portfolio-template",
   "work-life",
   "FCC-Front-End-Libraries-Projects",
 ];
 
-// Replace the defualt GitHub image for matching repos below (images imported above - lines 13-14)
+// Project card images
 export const projectCardImages = [
   {
     name: "github-react-portfolio-template",
@@ -138,9 +122,11 @@ export const projectCardImages = [
   },
 ];
 
-/* Contact Info
- ************************************************************** 
-  Add your formspree endpoint below.
-  https://formspree.io/
-*/
+// Contanct info
 export const formspreeUrl = process.env.REACT_APP_FORMSPREE_URL;
+
+// Theme colors
+export const color = "#45413C";
+export const background = "#F5F2E8";
+export const darkColor = "#FBFDFF";
+export const darkBackground = "#27272A";

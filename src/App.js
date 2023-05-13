@@ -5,6 +5,8 @@ import { fetchGitHubReops } from "./pages/allProjectsSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Element } from "react-scroll";
 import { ThemeProvider } from "styled-components";
+// Data
+import { color, background, darkColor, darkBackground } from "./data";
 // Components
 import ScrollToTop from "./components/ScrollToTop";
 import GlobalStyles from "./components/GlobalStyles";
@@ -19,13 +21,13 @@ const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
 const themes = {
   light: {
     name: "light",
-    color: "#45413C",
-    background: "#F5F2E8",
+    color: color,
+    background: background,
   },
   dark: {
     name: "dark",
-    color: "#FBFDFF",
-    background: "#27272A",
+    color: darkColor,
+    background: darkBackground,
   },
 };
 
