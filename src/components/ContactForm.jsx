@@ -15,7 +15,11 @@ export default function ContactForm() {
   const { theme } = useAppContext();
 
   React.useEffect(() => {
-    console.log(process.env.REACT_APP_CONTACT_FORM_KEY);
+    let secrets;
+    process.env.secrets
+      ? (secrets = JSON.parse(process.env.secrets))
+      : (secrets = process.env.REACT_APP_CONTACT_FORM_KEY);
+    console.log(secrets);
     API.get("contactForm", "/formDetails")
       .then((response) => {
         // Add your code here
