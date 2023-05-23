@@ -10,6 +10,17 @@
       "StackName": "amplify-portfolio-prod-132353",
       "StackId": "arn:aws:cloudformation:us-east-2:566427100098:stack/amplify-portfolio-prod-132353/0a226a90-c5ba-11ed-abee-0ae1d011f7d4",
       "AmplifyAppId": "d24jdan50vh09h"
+    },
+    "categories": {
+      "function": {
+        "portfolioContactForm": {
+          "deploymentBucketName": "amplify-portfolio-prod-132353-deployment",
+          "s3Key": "amplify-builds/portfolioContactForm-6636615477304354664b-build.zip"
+        }
+      },
+      "api": {
+        "contactForm": {}
+      }
     }
   }
 }
