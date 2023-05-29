@@ -1,6 +1,5 @@
 import React from "react";
 import { useAppContext } from "../appContext";
-import { API } from "aws-amplify";
 // Data
 import { formspreeUrl } from "../data";
 // Components
@@ -13,18 +12,6 @@ export default function ContactForm() {
   const [danger, setDanger] = React.useState(false);
   const [dangerMessage, setDangerMessage] = React.useState(null);
   const { theme } = useAppContext();
-
-  React.useEffect(() => {
-    // console.log(process.env.REACT_APP_CONTACT_FORM_KEY);
-    API.get("contactForm", "/formDetails")
-      .then((response) => {
-        // Add your code here
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  }, []);
 
   async function postData(data) {
     const response = await fetch(formspreeUrl, {

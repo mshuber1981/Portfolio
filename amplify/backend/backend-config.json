@@ -1,27 +1,6 @@
 {
-  "api": {
-    "contactForm": {
-      "dependsOn": [
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
-          "resourceName": "portfolioContactForm"
-        }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "API Gateway"
-    }
-  },
-  "function": {
-    "portfolioContactForm": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
+  "api": {},
+  "function": {},
   "parameters": {
     "AMPLIFY_function_portfolioContactForm_deploymentBucketName": {
       "usedBy": [
