@@ -1,22 +1,4 @@
 {
   "api": {},
-  "function": {},
-  "parameters": {
-    "AMPLIFY_function_portfolioContactForm_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "portfolioContactForm"
-        }
-      ]
-    },
-    "AMPLIFY_function_portfolioContactForm_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "portfolioContactForm"
-        }
-      ]
-    }
-  }
+  "function": {}
 }
