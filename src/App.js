@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchGitHubReops } from "./pages/allProjectsSlice";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Element } from "react-scroll";
-import { ThemeProvider } from "styled-components";
+import { StyleSheetManager, ThemeProvider } from "styled-components";
 // Data
 import { color, background, darkColor, darkBackground } from "./data";
 // Components
@@ -54,17 +54,19 @@ export default function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={themes[theme]}>
-        <ScrollToTop />
-        <GlobalStyles />
-        <Element name={"Home"} id="home">
-          <NavBar />
-        </Element>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/all-projects" element={<AllProjects />} />
-          <Route path="/my-story" element={<MyStory />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <StyleSheetManager enableVendorPrefixes>
+          <ScrollToTop />
+          <GlobalStyles />
+          <Element name={"Home"} id="home">
+            <NavBar />
+          </Element>
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/all-projects" element={<AllProjects />} />
+            <Route path="/my-story" element={<MyStory />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </StyleSheetManager>
       </ThemeProvider>
     </BrowserRouter>
   );
