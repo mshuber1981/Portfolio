@@ -59,11 +59,6 @@ const StyledDiv = styled.div`
       animation: 15s ${vortex} linear infinite;
     }
   }
-
-  @media screen and (min-width: 1180px) {
-    /* width: 10rem;
-    height: 10rem; */
-  }
 `;
 
 export default function Vortex() {
