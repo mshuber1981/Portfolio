@@ -51,10 +51,6 @@ const StyledDiv = styled.div`
   right: 1.5rem;
   visibility: hidden;
 
-  .link-icons {
-    color: ${({ theme }) => (theme.name === "light" ? "#45413C" : "#F5F2E8")};
-  }
-
   &.show-up {
     visibility: visible;
   }
