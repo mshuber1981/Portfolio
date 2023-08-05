@@ -9,6 +9,7 @@ import { Card } from "react-bootstrap";
 
 const StyledCardComponent = styled.div`
   .card {
+    color: ${({ theme }) => theme.color};
     background: ${({ theme }) => (theme.name === "light" ? "" : "#515151")};
     box-shadow: ${({ theme }) =>
       theme.name === "light"
