@@ -59,9 +59,12 @@ export default function AboutMe() {
                 {moreInfo && <p>{moreInfo}</p>}
                 <p>
                   Checkout the GitHub template I created to build this
-                  performant, accessible, progressive web application here.{" "}
-                  {<Icon icon="material-symbols:arrow-drop-down" />} <br />
-                  <a href="https://github.com/mshuber1981/github-react-portfolio-template">
+                  performant, accessible, progressive web application below.
+                  <br />
+                  <a
+                    href="https://github.com/mshuber1981/github-react-portfolio-template"
+                    className="link"
+                  >
                     mshuber1981/github-react-portfolio-template
                   </a>
                 </p>

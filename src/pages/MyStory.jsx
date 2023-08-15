@@ -250,9 +250,12 @@ export default function MyStory() {
               <br />
               <p>
                 Update 5/1/2023 - I made it through my first year! See all the
-                cool stuff I have been learning about here.{" "}
-                {<Icon icon="material-symbols:arrow-drop-down" />} <br />
-                <a href="https://mshuber1981.github.io/work-life/">
+                cool stuff I have been learning about here.
+                <br />
+                <a
+                  href="https://mshuber1981.github.io/work-life/"
+                  className="link"
+                >
                   mshuber1981.github.io/work-life/
                 </a>
               </p>
