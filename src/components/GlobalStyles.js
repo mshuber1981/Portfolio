@@ -36,6 +36,14 @@ a:hover {
   cursor: pointer;
 }
 
+.link {
+  color: var(--primary);
+
+  &:hover {
+    color: var(--primary-dark);
+  }
+}
+
 .navbar {
   border-bottom: var(--border);
 
