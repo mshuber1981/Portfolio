@@ -4,8 +4,6 @@ import styled from "styled-components";
 import { Element, Link } from "react-scroll";
 // Icons
 import { Icon } from "@iconify/react";
-// Images
-import AWS from "../images/AWS-Developer-Associate-2020.png";
 // Components
 import { Button } from "react-bootstrap";
 import { BackToTop, Title } from "../components/globalStyledComponents";
@@ -39,15 +37,6 @@ const StyledMain = styled.main`
   .timeline .iframe {
     width: 100%;
     height: auto;
-  }
-
-  .timeline-img {
-    margin-top: 2rem;
-
-    .tl-img {
-      width: 200px;
-      height: 200px;
-    }
   }
 
   .timeline-item:nth-child(even) {
@@ -109,7 +98,11 @@ export default function MyStory() {
   const { theme } = useAppContext();
 
   React.useEffect(function () {
+    const script = document.createElement("script");
     document.title = "My Story";
+    script.src = "//cdn.credly.com/assets/utilities/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
   }, []);
 
   return (
@@ -220,15 +213,13 @@ export default function MyStory() {
                 application developement was a hot topic and I was genuinely
                 interested.
               </p>
-              <div className="timeline-img">
-                <a href="https://www.credly.com/badges/b8be6845-1c01-4205-8387-09a97be77004/public_url">
-                  <img
-                    src={AWS}
-                    alt="AWS Developer Associate"
-                    loading="lazy"
-                    className="tl-img mx-auto d-block"
-                  />
-                </a>
+              <div className="d-flex flex-column justify-content-center align-items-center mt-4">
+                <div
+                  data-iframe-width="150"
+                  data-iframe-height="270"
+                  data-share-badge-id="4c5a6916-9679-4500-9eb8-e3042d073dd2"
+                  data-share-badge-host="https://www.credly.com"
+                ></div>
               </div>
               <span className="number"> 6 </span>
             </article>
