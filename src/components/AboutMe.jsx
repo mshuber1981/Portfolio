@@ -1,101 +1,64 @@
 import React from "react";
-import { useAppContext } from "../appContext";
+// Styles
 import styled from "styled-components";
-import { Element } from "react-scroll";
-// Data
-import { moreInfo } from "../data";
-// Icons
-import { Icon } from "@iconify/react";
-import { ReactComponent as UD } from "../images/ud.svg";
+// State
+import PropTypes from "prop-types";
 // Components
-import { Button, Col, Container, Row } from "react-bootstrap";
-import { Title } from "./globalStyledComponents";
+import { Element } from "react-scroll";
+import { Col, Container, Row } from "react-bootstrap";
+import Title from "./Title";
 
+// #region styled-components
 const StyledAboutMe = styled.section`
   p {
     font-size: 1.25rem;
   }
-
   .img {
     width: 18rem;
     height: 18rem;
   }
-
-  .crypto {
-    height: 10rem;
-    margin: 2.5rem 0;
-
-    a {
-      display: flex;
-      align-items: center;
-      height: 4.25rem;
-      margin: 1rem 1rem;
-      background: #cacaca;
-
-      &:hover {
-        background: white;
-      }
-    }
-  }
 `;
+// #endregion
 
-export default function AboutMe() {
-  const { theme } = useAppContext();
+// #region component
+const propTypes = {
+  avatar_url: PropTypes.string.isRequired,
+  bio: PropTypes.string,
+  moreInfo: PropTypes.string,
+};
 
+const AboutMe = ({ avatar_url, bio, moreInfo }) => {
   return (
     <Element name={"About"} id="about">
       <StyledAboutMe className="section">
         <Container>
-          <Container className="d-flex">
-            <Title>
-              <h2>About Me</h2>
-              <div className="underline"></div>
-            </Title>
+          <Container className="d-flex justify-content-center">
+            <Title size={"h2"} text={"About Me"} />
           </Container>
           <Row className="align-items-center mt-5">
             <Col className="d-flex flex-column text-center">
               <Container>
-                <p>I am a JavaScript Developer.</p>
+                {bio && <p>{bio}</p>}
                 {moreInfo && <p>{moreInfo}</p>}
-                <p>
-                  Checkout the GitHub template I created to build this
-                  performant, accessible, progressive web application below.
-                  <br />
-                  <a
-                    href="https://github.com/mshuber1981/github-react-portfolio-template"
-                    className="link"
-                  >
-                    mshuber1981/github-react-portfolio-template
-                  </a>
-                </p>
               </Container>
             </Col>
             <Col className="d-none d-md-block text-center">
               <img
-                src="https://avatars1.githubusercontent.com/u/55626560?s=460&u=bbb9b547a6e0c4856997702307c52c6598c72f93&v=4"
+                src={avatar_url}
                 alt="GitHub Avatar"
                 loading="lazy"
-                className="mx-auto rounded-circle"
+                className="mx-auto rounded-circle border border-primary-subtle"
                 style={{ width: "15rem", height: "15rem" }}
               />
             </Col>
           </Row>
-          <Container className="crypto d-flex flex-wrap w-100 justify-content-center align-items-center">
-            <Button
-              size="lg"
-              variant={theme === "light" ? "outline-dark" : "outline-light"}
-              href="https://ud.me/mikeyhuber.crypto"
-              aria-label="Unstoppable Domains Profile"
-            >
-              <div>
-                <UD /> <Icon icon="logos:bitcoin" />{" "}
-                <Icon icon="logos:ethereum-color" />{" "}
-                <Icon icon="logos:cardano-icon" />
-              </div>
-            </Button>
-          </Container>
         </Container>
       </StyledAboutMe>
     </Element>
   );
-}
+};
+
+AboutMe.propTypes = propTypes;
+// #endregion
+
+export default AboutMe;

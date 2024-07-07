@@ -1,8 +1,10 @@
 import React from "react";
+// Styles
 import styled, { keyframes } from "styled-components";
 // Components
 import { Container } from "react-bootstrap";
 
+// #region styled-components
 const vortex = keyframes`
 	0% {
 		transform: rotate(90deg);
@@ -32,7 +34,10 @@ const StyledDiv = styled.div`
     height: 100%;
     border: 2px solid #000;
     border-color: ${({ theme }) =>
-      `${theme.color} transparent transparent transparent`};
+      //   `${theme.color} transparent transparent transparent`};
+      theme.name === "light"
+        ? "var(--bs-dark) transparent transparent transparent"
+        : "var(--bs-light) transparent transparent transparent"};
     border-radius: 50%;
 
     z-index: -1;
@@ -40,7 +45,7 @@ const StyledDiv = styled.div`
   }
 
   .arc:after {
-    border-color: transparent transparent var(--primary) transparent;
+    border-color: transparent transparent var(--bs-primary) transparent;
   }
 
   .arc {
@@ -50,8 +55,11 @@ const StyledDiv = styled.div`
     height: 85%;
     margin: 7.5%;
     border-radius: 50%;
-    box-shadow: 0px 0px 0px 2px #fff2;
-    box-shadow: ${({ theme }) => `0px 0px 0px 2px ${theme.background}`};
+    /* box-shadow: 0px 0px 0px 2px var(--bs-gray); */
+    box-shadow: ${({ theme }) =>
+      theme.name === "light"
+        ? "0px 0px 0px 2px var(--bs-light)"
+        : "0px 0px 0px 2px var(--bs-gray)"};
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -60,8 +68,10 @@ const StyledDiv = styled.div`
     }
   }
 `;
+// #endregion
 
-export default function Vortex() {
+// #region component
+const Vortex = () => {
   return (
     <Container className="d-flex flex-column align-items-center justify-content-center">
       <StyledDiv className="vortex">
@@ -99,4 +109,7 @@ export default function Vortex() {
       </StyledDiv>
     </Container>
   );
-}
+};
+// #endregion
+
+export default Vortex;

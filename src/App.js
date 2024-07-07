@@ -1,71 +1,191 @@
 import React from "react";
-import { useAppContext } from "./appContext";
-import { useDispatch } from "react-redux";
-import { fetchGitHubReops } from "./pages/allProjectsSlice";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Element } from "react-scroll";
+// Styles
 import { ThemeProvider } from "styled-components";
-// Data
-import { color, background, darkColor, darkBackground } from "./data";
-// Components
-import ScrollToTop from "./components/ScrollToTop";
-import GlobalStyles from "./components/GlobalStyles";
-import NavBar from "./components/NavBar";
+// State
+import { useDispatch, useSelector } from "react-redux";
+import { selectMode, setMode } from "./app/appSlice";
+import {
+  setProjects,
+  setMainProjects,
+  selectProjects,
+} from "./app/projectsSlice";
+import { useGetUsersQuery, useGetProjectsQuery } from "./app/apiSlice";
+import PropTypes from "prop-types";
+// Router
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Pages
 import Home from "./pages/Home";
 import AllProjects from "./pages/AllProjects";
 import MyStory from "./pages/MyStory";
 import NotFound from "./pages/NotFound";
+// Components
+import { ErrorBoundary } from "react-error-boundary";
+import AppFallback from "./components/AppFallback";
+import GlobalStyles from "./components/GlobalStyles";
+import ScrollToTop from "./components/ScrollToTop";
+import Loading from "./components/Loading";
+import { Element } from "react-scroll";
+import { Container } from "react-bootstrap";
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+// Config
+import { footerTheme, navLogo, logoBackground } from "./config";
+// Util
+import { getStoredTheme, getPreferredTheme, setTheme } from "./utils";
 
-const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const themes = {
-  light: {
-    name: "light",
-    color: color,
-    background: background,
-  },
-  dark: {
-    name: "dark",
-    color: darkColor,
-    background: darkBackground,
-  },
+// #region component
+const propTypes = {
+  filteredProjects: PropTypes.arrayOf(PropTypes.string),
+  projectCardImages: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      image: PropTypes.node.isRequired,
+    })
+  ),
 };
 
-export default function App() {
-  const { theme, setTheme } = useAppContext();
+const App = ({ projectCardImages = [], filteredProjects = [] }) => {
+  const theme = useSelector(selectMode);
+  const projects = useSelector(selectProjects);
   const dispatch = useDispatch();
+  const { isLoading, isSuccess, isError, error } = useGetUsersQuery();
+  const { data: projectsData } = useGetProjectsQuery();
+  let content;
 
-  React.useEffect(
-    function () {
-      const updateTheme = () =>
-        darkMode ? setTheme("dark") : setTheme("light");
-      updateTheme();
-      dispatch(fetchGitHubReops());
+  // Set all projects state
+  React.useEffect(() => {
+    const tempData = [];
+    if (projectsData !== undefined && projectsData.length !== 0) {
+      projectsData.forEach((element) => {
+        const tempObj = {
+          id: null,
+          homepage: null,
+          description: null,
+          image: null,
+          name: null,
+          html_url: null,
+        };
+        tempObj.id = element.id;
+        tempObj.homepage = element.homepage;
+        tempObj.description = element.description;
+        tempObj.name = element.name;
+        tempObj.html_url = element.html_url;
+        tempData.push(tempObj);
+      });
+      if (
+        projectCardImages !== (undefined && null) &&
+        projectCardImages.length !== 0
+      ) {
+        projectCardImages.forEach((element) => {
+          tempData.forEach((ele) => {
+            if (element.name.toLowerCase() === ele.name.toLowerCase()) {
+              ele.image = element.image;
+            }
+          });
+        });
+      }
+      dispatch(setProjects(tempData));
+    }
+  }, [projectsData, projectCardImages, dispatch]);
+
+  // Set main projects state
+  React.useEffect(() => {
+    if (projects.length !== 0) {
+      if (
+        filteredProjects !== (undefined && null) &&
+        filteredProjects.length !== 0
+      ) {
+        const tempArray = projects.filter((obj) =>
+          filteredProjects.includes(obj.name)
+        );
+        tempArray.length !== 0
+          ? dispatch(setMainProjects([...tempArray]))
+          : dispatch(setMainProjects([...projects.slice(0, 3)]));
+      } else {
+        dispatch(setMainProjects([...projects.slice(0, 3)]));
+      }
+    }
+  }, [projects, filteredProjects, dispatch]);
+
+  // Theme
+  const setThemes = React.useCallback(
+    (theme) => {
+      if (theme) {
+        dispatch(setMode(theme));
+        setTheme(theme);
+      } else {
+        dispatch(setMode(getPreferredTheme()));
+        setTheme(getPreferredTheme());
+      }
     },
-    [setTheme, dispatch]
+    [dispatch]
   );
+
+  React.useEffect(() => {
+    setThemes();
+  }, [setThemes]);
 
   window
     .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (e) =>
-      e.matches ? setTheme("dark") : setTheme("light")
-    );
+    .addEventListener("change", () => {
+      const storedTheme = getStoredTheme();
+      if (storedTheme !== "light" && storedTheme !== "dark") {
+        setThemes();
+      }
+    });
 
-  return (
-    <BrowserRouter>
-      <ThemeProvider theme={themes[theme]}>
-        <ScrollToTop />
-        <GlobalStyles />
+  if (isLoading) {
+    content = (
+      <Container className="d-flex vh-100 align-items-center">
+        <Loading />
+      </Container>
+    );
+  } else if (isSuccess) {
+    content = (
+      <>
         <Element name={"Home"} id="home">
-          <NavBar />
+          <NavBar
+            Logo={navLogo}
+            callBack={(theme) => setThemes(theme)}
+            logoBackground={logoBackground}
+          />
         </Element>
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/all-projects" element={<AllProjects />} />
-          <Route path="/my-story" element={<MyStory />} />
+          <Route path="/All-Projects" element={<AllProjects />} />
+          <Route path="/My-story" element={<MyStory />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </ThemeProvider>
-    </BrowserRouter>
+        <Footer mode={footerTheme} />
+      </>
+    );
+  } else if (isError) {
+    content = (
+      <Container className="d-flex vh-100 align-items-center justify-content-center">
+        <h2>
+          {error.status !== "FETCH_ERROR"
+            ? `${error.status}: ${error.data.message} - check githubUsername in src/config.js`
+            : `${error.status} - check URLs in  src/app/apiSlice.js`}
+        </h2>
+      </Container>
+    );
+  }
+
+  return (
+    <ErrorBoundary FallbackComponent={AppFallback}>
+      {/* https://reactrouter.com/en/main/router-components/hash-router#future */}
+      <BrowserRouter future={{ v7_startTransition: true }}>
+        <ThemeProvider theme={{ name: theme }}>
+          <ScrollToTop />
+          <GlobalStyles />
+          {content}
+        </ThemeProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
-}
+};
+
+App.propTypes = propTypes;
+// #endregion
+
+export default App;

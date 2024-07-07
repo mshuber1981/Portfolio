@@ -1,71 +1,69 @@
 import React from "react";
-import { useAppContext } from "../appContext";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+// Styles
+import styled, { keyframes } from "styled-components";
 // Components
-import { Button, Container } from "react-bootstrap";
-import Vortex from "../components/Vortex";
+import { Container } from "react-bootstrap";
+// Images
+import Logo from "../images/logo.svg";
+// Utils
+import { updateTitle } from "../utils";
+
+// #region styled-components
+const Spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 const StyledNotFound = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - var(--nav-height));
-
-  .container {
-    width: 75%;
-  }
+  min-height: calc(100vh - 2 * var(--nav-height) - 1rem);
 
   span {
-    z-index: 1;
-    font-size: 3rem;
-    margin: 0 1rem;
+    font-size: 5rem;
   }
 
-  .not-found {
-    margin-top: 4rem;
+  p {
+    font-size: 2rem;
   }
 
-  @media screen and (min-width: 667px) {
-    .container {
-      width: 50%;
-    }
+  .logo-img {
+    width: 10rem;
   }
 
-  @media screen and (min-width: 1180px) {
-    .container {
-      width: 25%;
+  @media (prefers-reduced-motion: no-preference) {
+    img {
+      animation: ${Spin} infinite 20s linear;
     }
   }
 `;
+// #endregion
 
-export default function NotFound() {
-  const { theme } = useAppContext();
-
-  React.useEffect(function () {
-    document.title = "404";
+// #region component
+const NotFound = () => {
+  React.useEffect(() => {
+    updateTitle("Not found...");
   }, []);
 
   return (
     <>
       <StyledNotFound>
-        <Container className="d-flex justify-content-evenly mt-5 container">
+        <Container className="d-flex justify-content-center">
           <span>4</span>
-          <Vortex />
+          <img src={Logo} alt="React Logo" className="logo-img" />
           <span>4</span>
         </Container>
-        <p className="not-found">Not found...</p>
-        <Link to={"/"}>
-          <Button
-            size="lg"
-            variant={theme === "light" ? "outline-dark" : "outline-light"}
-            className="mt-2"
-          >
-            Home
-          </Button>
-        </Link>
+        <p className="text-center">Sorry, page not found...</p>
       </StyledNotFound>
     </>
   );
-}
+};
+// #endregion
+
+export default NotFound;
