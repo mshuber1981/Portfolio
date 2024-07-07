@@ -1,14 +1,21 @@
 import React from "react";
-import { useAppContext } from "../appContext";
+// Styles
 import styled from "styled-components";
-import { Element, Link } from "react-scroll";
+// State
+import { useSelector } from "react-redux";
+import { selectMode } from "../app/appSlice";
+import { useGetUsersQuery } from "../app/apiSlice";
 // Icons
 import { Icon } from "@iconify/react";
 // Components
+import { Element, Link } from "react-scroll";
 import { Button } from "react-bootstrap";
-import { BackToTop, Title } from "../components/globalStyledComponents";
-import Footer from "../components/Footer";
+import Title from "../components/Title";
+import BackToTop from "../components/BackToTop";
+// Utils
+import { updateTitle } from "../utils";
 
+// #region styled-components
 const StyledMain = styled.main`
   .section {
     padding: 2rem 0;
@@ -24,7 +31,7 @@ const StyledMain = styled.main`
   }
 
   .timeline-item {
-    border-top: 2px dashed var(--primary);
+    border-top: 2px dashed var(--bs-primary);
     margin: 0;
     padding: 4rem 2rem;
     position: relative;
@@ -40,7 +47,7 @@ const StyledMain = styled.main`
   }
 
   .timeline-item:nth-child(even) {
-    border-left: 2px dashed var(--primary);
+    border-left: 2px dashed var(--bs-primary);
     border-top-left-radius: 2rem;
     border-bottom-left-radius: 2rem;
     margin-right: 2rem;
@@ -48,7 +55,7 @@ const StyledMain = styled.main`
   }
 
   .timeline-item:nth-child(odd) {
-    border-right: 2px dashed var(--primary);
+    border-right: 2px dashed var(--bs-primary);
     border-top-right-radius: 2rem;
     border-bottom-right-radius: 2rem;
     margin-left: 2rem;
@@ -69,7 +76,7 @@ const StyledMain = styled.main`
     top: 50%;
     transform: translate(-50%, -50%);
     margin-bottom: 0;
-    background: var(--primary);
+    background: var(--bs-primary);
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
@@ -93,9 +100,12 @@ const StyledMain = styled.main`
     }
   }
 `;
+// #endregion
 
-export default function MyStory() {
-  const { theme } = useAppContext();
+// #region component
+const MyStory = () => {
+  const theme = useSelector(selectMode);
+  const { data: userData } = useGetUsersQuery();
 
   React.useEffect(function () {
     const script = document.createElement("script");
@@ -105,14 +115,15 @@ export default function MyStory() {
     document.body.appendChild(script);
   }, []);
 
+  React.useEffect(() => {
+    updateTitle(`${userData.name} | My Story`);
+  }, [userData]);
+
   return (
     <>
       <StyledMain>
         <section className="section timeline">
-          <Title>
-            <h2>My Story</h2>
-            <div className="underline"></div>
-          </Title>
+          <Title size={"h2"} text={"My Story"} />
           <Link to={"Present"} offset={-62} className="link-icons">
             <Button
               size="lg"
@@ -257,7 +268,9 @@ export default function MyStory() {
         </section>
       </StyledMain>
       <BackToTop home={"Home"} />
-      <Footer />
     </>
   );
-}
+};
+// #endregion
+
+export default MyStory;

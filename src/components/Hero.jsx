@@ -1,14 +1,27 @@
 import React from "react";
-import { Link } from "react-scroll";
-import styled from "styled-components";
+// Styles
+import styled, { keyframes } from "styled-components";
+// State
+import PropTypes from "prop-types";
 // Icons
 import { Icon } from "@iconify/react";
-// Media
-import { Light, Dark } from "../data";
+import { Light, Dark } from "../config";
 // Components
-import { Col, Container, Row } from "react-bootstrap";
+import { useErrorBoundary } from "react-error-boundary";
+import { Link } from "react-scroll";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Vortex from "./Vortex";
 import SocialLinks from "./SocialLinks";
+
+// #region styled-components
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;
 
 const StyledHero = styled.header`
   position: relative;
@@ -27,9 +40,9 @@ const StyledHero = styled.header`
     height: 100%;
     background: ${({ theme }) =>
       theme.name === "light"
-        ? "linear-gradient(135deg, var(--primary), var(--bs-light))"
-        : "linear-gradient(135deg, var(--primary), var(--bs-dark))"};
-    z-index: -3;
+        ? "linear-gradient(135deg, var(--bs-primary), var(--bs-light))"
+        : "linear-gradient(135deg, var(--bs-primary), var(--bs-dark))"};
+    z-index: -2;
   }
 
   /* Overlay for contrast */
@@ -44,17 +57,16 @@ const StyledHero = styled.header`
       theme.name === "light"
         ? "rgba(255, 255, 255, 0.2)"
         : "rgba(0, 0, 0, 0.2)"};
-    z-index: -2;
+    z-index: -1;
   }
 
   .down-container {
     height: 10rem;
   }
 
-  @media screen and (min-width: 820px) {
-    .vortex {
-      width: 12rem;
-      height: 12rem;
+  @media (prefers-reduced-motion: no-preference) {
+    .hero-img {
+      animation: ${spin} infinite 20s linear;
     }
   }
 
@@ -81,21 +93,31 @@ const StyledHero = styled.header`
           : `url(${Dark}) center center fixed no-repeat`};
       background-size: cover;
     }
-  }
 
-  .vortex {
-    width: 20rem;
-    height: 20rem;
+    .vortex {
+      width: 20rem;
+      height: 20rem;
+    }
   }
 `;
+// #endregion
 
-export default function Hero() {
+// #region component
+const propTypes = {
+  name: PropTypes.string,
+};
+
+const Hero = ({ name }) => {
+  const { showBoundary } = useErrorBoundary();
+
   return (
     <StyledHero>
       <Container>
         <Row className="align-items-center text-center">
           <Col>
-            <h1 className="mb-3 display-3 title">Michael Huber</h1>
+            <h1 className="mb-3 display-3 title">
+              {name === null ? "null" : name}
+            </h1>
             <div className="d-flex align-items-center justify-content-center">
               <SocialLinks />
             </div>
@@ -111,7 +133,23 @@ export default function Hero() {
             </Link>
           </Col>
         </Row>
+        <Button
+          className="d-none"
+          onClick={() =>
+            showBoundary({
+              name: "Error",
+              message: "Simulated error message",
+            })
+          }
+        >
+          Simulate Error Boundary
+        </Button>
       </Container>
     </StyledHero>
   );
-}
+};
+
+Hero.propTypes = propTypes;
+// #endregion
+
+export default Hero;

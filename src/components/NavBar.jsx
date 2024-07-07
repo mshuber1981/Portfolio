@@ -1,20 +1,24 @@
 import React from "react";
-import { useAppContext } from "../appContext";
-import { Link as ScrollLink } from "react-scroll";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-// Icons
-import { Icon } from "@iconify/react";
-// Media
-import { NavLogo } from "../data";
+// State
+import { useSelector } from "react-redux";
+import { selectMode } from "../app/appSlice";
+import PropTypes from "prop-types";
+// Router
+import { Link, useLocation, useNavigate } from "react-router-dom";
+// Images
+import defaultLogo from "../images/defaultNavLogo.svg";
 // Components
+import { Link as ScrollLink } from "react-scroll";
 import { Container, Dropdown, Nav, Navbar } from "react-bootstrap";
+import ThemeToggle from "./ThemeToggle";
 
+// #region constants
 const navLinks = {
   routes: [
     { id: "1R", name: "Home", route: "/" },
-    { id: "2R", name: "All Projects", route: "/all-projects" },
-    { id: "3R", name: "My Story", route: "/my-story" },
+    { id: "2R", name: "All Projects", route: "/All-Projects" },
+    { id: "3R", name: "My Story", route: "/My-Story" },
   ],
   to: [
     { id: "1T", name: "Home", to: "Home" },
@@ -24,75 +28,46 @@ const navLinks = {
     { id: "5T", name: "Contact", to: "Contact" },
   ],
 };
+// #endregion
 
-// Theme Toggle
-const StyledSwitch = styled.label`
-  /* Slider pill */
-  display: flex;
-  width: 3.2rem;
-  font-size: 1.5rem;
-  border-radius: 30px;
-  transition: var(--transition);
-  border: 2px solid;
-
-  /* Hide defualt checkbox */
-  input[type="checkbox"] {
-    height: 0;
-    width: 0;
-    opacity: 0;
+// #region styled-components
+const StyledDiv = styled.div`
+  .navbar {
+    border-bottom: var(--border);
   }
 
-  /* Move span when checked */
-  input[type="checkbox"]:checked + div {
-    transform: translateX(100%);
-  }
-
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: var(--transition);
+  .spacer {
+    height: var(--nav-height);
   }
 `;
+// #endregion
 
-// Spacer for fixed Navigation bar
-const FixedNavSpacer = styled.div`
-  height: var(--nav-height);
-`;
+// #region component
+const propTypes = {
+  Logo: PropTypes.node,
+  callBack: PropTypes.func,
+  closeDelay: PropTypes.number,
+  logoBackground: PropTypes.oneOf(["light", "dark"]),
+};
 
-function ThemeToggle() {
-  const { theme, toggleTheme, closeExpanded } = useAppContext();
-
-  return (
-    <StyledSwitch onClick={closeExpanded}>
-      <input
-        type="checkbox"
-        aria-label={`Toggle theme, currently ${theme}.`}
-        onClick={toggleTheme}
-      />
-      <div>
-        {theme === "light" ? (
-          <Icon icon="game-icons:sunflower" />
-        ) : (
-          <Icon icon="game-icons:moon" />
-        )}
-      </div>
-    </StyledSwitch>
-  );
-}
-
-export default function NavBar() {
-  const { theme, isExpanded, closeExpanded, toggleExpanded } = useAppContext();
+const NavBar = ({
+  Logo = defaultLogo,
+  callBack,
+  closeDelay = 125,
+  logoBackground = "light",
+}) => {
+  const theme = useSelector(selectMode);
+  const [isExpanded, setisExpanded] = React.useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   return (
-    <>
-      <FixedNavSpacer />
+    <StyledDiv>
+      <div className="spacer" />
       <Navbar
         id="nav"
         collapseOnSelect={true}
-        expand="lg"
+        expand="xl"
         expanded={isExpanded}
         bg={theme === "light" ? "light" : "dark"}
         variant={theme === "light" ? "light" : "dark"}
@@ -101,8 +76,8 @@ export default function NavBar() {
         <Container>
           <Navbar.Brand href="https://mikeyhuber.me/">
             <img
-              alt="Coder Logo"
-              src={NavLogo}
+              alt="Logo"
+              src={Logo === null ? defaultLogo : Logo}
               width="35"
               height="35"
               className={
@@ -110,11 +85,16 @@ export default function NavBar() {
                   ? "rounded-circle border border-dark"
                   : "rounded-circle border border-light"
               }
+              style={
+                logoBackground === "light"
+                  ? { background: "var(--bs-light)" }
+                  : { background: "var(--bs-dark)" }
+              }
             />
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="responsive-navbar-nav"
-            onClick={toggleExpanded}
+            onClick={() => setisExpanded(!isExpanded)}
           />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav navbarScroll className="me-auto">
@@ -127,7 +107,11 @@ export default function NavBar() {
                           spy={true}
                           activeClass="active"
                           className="nav-link"
-                          onClick={closeExpanded}
+                          onClick={() => {
+                            setTimeout(() => {
+                              setisExpanded(false);
+                            }, closeDelay);
+                          }}
                         >
                           {el.name}
                         </ScrollLink>
@@ -144,7 +128,11 @@ export default function NavBar() {
                               ? "nav-link active"
                               : "nav-link"
                           }
-                          onClick={closeExpanded}
+                          onClick={() => {
+                            setTimeout(() => {
+                              setisExpanded(false);
+                            }, closeDelay);
+                          }}
                         >
                           {el.name}
                         </Link>
@@ -164,16 +152,20 @@ export default function NavBar() {
                     <Dropdown.Menu>
                       <Dropdown.Item
                         onClick={() => {
-                          navigate("/all-projects");
-                          closeExpanded();
+                          navigate("/All-Projects");
+                          setTimeout(() => {
+                            setisExpanded(false);
+                          }, closeDelay);
                         }}
                       >
                         All Projects
                       </Dropdown.Item>
                       <Dropdown.Item
                         onClick={() => {
-                          navigate("/my-story");
-                          closeExpanded();
+                          navigate("/My-Story");
+                          setTimeout(() => {
+                            setisExpanded(false);
+                          }, closeDelay);
                         }}
                       >
                         My Story
@@ -184,11 +176,20 @@ export default function NavBar() {
               )}
             </Nav>
             <Nav>
-              <ThemeToggle />
+              <ThemeToggle
+                closeDelay={closeDelay}
+                setExpanded={setisExpanded}
+                setTheme={callBack}
+              />
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
+    </StyledDiv>
   );
-}
+};
+
+NavBar.propTypes = propTypes;
+// #endregion
+
+export default NavBar;
