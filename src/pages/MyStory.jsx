@@ -124,7 +124,7 @@ const MyStory = () => {
       <StyledMain>
         <section className="section timeline">
           <Title size={"h2"} text={"My Story"} />
-          <Link to={"Present"} offset={-62} className="link-icons">
+          <Link to={"Present"} offset={-65} className="link-icons mt-4">
             <Button
               size="lg"
               variant={theme === "light" ? "outline-dark" : "outline-light"}
