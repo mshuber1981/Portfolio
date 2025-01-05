@@ -17,8 +17,8 @@ const StyledDiv = styled.div`
   position: absolute;
   display: block;
   overflow: hidden;
-  width: 8rem;
-  height: 8rem;
+  width: 12rem;
+  height: 12rem;
   transition: 2s ease;
   cursor: pointer;
 
