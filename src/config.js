@@ -11,7 +11,6 @@ import HeroDark from "./images/hero-dark.jpg";
 // Projects Images (add your images to the images directory and import below)
 import Logo from "./images/logo.svg";
 import Gears from "./images/gears.svg";
-import fcc from "./images/free-code-camp.svg";
 import Amplify from "./images/aws-amplify.svg";
 import Form from "./images/form-line.svg";
 
@@ -107,7 +106,7 @@ export const resume =
 export const filteredProjects = [
   "github-react-portfolio-template",
   "work-life",
-  "FCC-Front-End-Libraries-Projects",
+  "react-contact-form",
 ];
 
 // Replace the defualt GitHub image for matching repos below (images imported above - lines 7-8)
@@ -121,28 +120,12 @@ export const projectCardImages = [
     image: Gears,
   },
   {
-    name: "FCC-Front-End-Libraries-Projects",
-    image: fcc,
-  },
-  {
-    name: "FCC-JavaScript-Algorithms-and-Data-Structures-Projects",
-    image: fcc,
-  },
-  {
     name: "Portfolio",
     image: Amplify,
   },
   {
     name: "react-contact-form",
     image: Form,
-  },
-  {
-    name: "FCC-Responsive-Web-Design-Projects",
-    image: fcc,
-  },
-  {
-    name: "CRA-Starter",
-    image: Logo,
   },
 ];
 
